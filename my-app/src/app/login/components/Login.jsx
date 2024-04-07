@@ -10,7 +10,7 @@ import Loginbanner from "./Banner";
 const Login = () => {
   return (
     <div className="container mx-auto py-12">
-      <div className="flex justify-evenly ">
+      <div className="flex justify-evenly h-screen">
         <div>
           <Loginbanner />
         </div>
