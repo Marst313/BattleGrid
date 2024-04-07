@@ -82,7 +82,7 @@ const Login = () => {
             <button className="bg-discord text-white text-sm px-4 py-2 rounded-lg mr-2 w-52 font-bold">
               <div className="flex items-center justify-evenly">
                 <Image src={icon_discord} className="h-6 w-6" />
-                <p>Discords</p>
+                <p>Discord</p>
               </div>
             </button>
             <button className="bg-white text-hitam px-4  text-sm py-2 rounded-lg  w-52 font-bold">
