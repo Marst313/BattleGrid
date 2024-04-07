@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        oren: "#FD7014", 
+        abu: "#5F6369",
+        hitam: "#5A5773",
+        discord: "#7289DA",
+      
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
