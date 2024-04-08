@@ -5,6 +5,7 @@ import icon from "@/asset/image/login.image/img.Logo.png";
 import React from "react";
 import { usePathname } from "next/navigation";
 import Menu from "./Menu";
+import Link from "next/link";
 const Navbar = () => {
   const path = usePathname();
 
@@ -14,7 +15,9 @@ const Navbar = () => {
       <Menu />
 
       <div className="flex gap-8">
-        <p className="bg-oren px-4 py-1 rounded-md">Sign In</p>
+        <Link href={"/login"}>
+          <p className="bg-oren px-4 py-1 rounded-md">Sign In</p>
+        </Link>
         <p className="border-oren border-2 px-4 py-1 rounded-md">Sign Up</p>
       </div>
     </div>
