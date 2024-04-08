@@ -7,7 +7,7 @@ exports.signup = async (req, res, next) => {
     const { name, email, password, confirmPassword, role } = req.body;
 
     if (password !== confirmPassword) {
-      throw new Error('Passwords do not match', 400);
+      return next(new AppError('Passwords do not match', 400));
     }
 
     const encryptPassword = await hashPassword(password);

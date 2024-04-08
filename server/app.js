@@ -1,8 +1,9 @@
 const userRouter = require('./routes/userRoutes');
+const globalErrorHandle = require('./controller/errorController');
+const AppError = require('./utils/appError');
 
 const helmet = require('helmet');
 const express = require('express');
-const AppError = require('./utils/appError');
 
 const app = express();
 
@@ -18,5 +19,7 @@ app.all('*', (req, res, next) => {
 
   next(new AppError(`Cant find ${req.originalUrl} on this server`));
 });
+
+app.use(globalErrorHandle);
 
 module.exports = app;
