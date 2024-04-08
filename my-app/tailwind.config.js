@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         oren: "#FD7014", 
         abu: "#5F6369",
+        abu1: "#222831",
         hitam: "#5A5773",
         discord: "#7289DA",
       
