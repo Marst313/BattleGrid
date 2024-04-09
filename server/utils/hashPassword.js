@@ -9,3 +9,17 @@ exports.hashPassword = async (password) => {
     console.log(error);
   }
 };
+
+exports.checkPassword = async (candidatePassword, userPassword) => {
+  try {
+    const match = await bcrypt.compare(candidatePassword, userPassword);
+
+    return match;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.exclude = (user, keys) => {
+  return Object.fromEntries(Object.entries(user).filter(([key]) => !keys.includes(key)));
+};

@@ -7,7 +7,7 @@ const handleCastErrorDB = (err) => {
 };
 
 const handleDuplicateFieldsDB = (err) => {
-  const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+  const value = err.meta.target[0];
   const message = `Duplicate field value:${value} Please use value`;
 
   return new AppError(message, 400);
@@ -89,9 +89,10 @@ module.exports = (err, req, res, next) => {
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err };
     error.message = err.message;
+    console.log(err.code);
 
     if (err.stack.startsWith('CastError')) error = handleCastErrorDB(error);
-    if (err.code === 11000) error = handleDuplicateFieldsDB(err);
+    if (err.code === 'P2002') error = handleDuplicateFieldsDB(err);
     if (err.stack.startsWith('ValidationError')) error = handleValidationErrorDB(error);
     if (err.stack.startsWith('JsonWebTokenError')) error = handleJWTError();
     if (err.stack.startsWith('TokenExpiredError')) error = handleJWTExpiredError();
