@@ -6,6 +6,7 @@ const hpp = require('hpp');
 const helmet = require('helmet');
 const express = require('express');
 const { rateLimit } = require('express-rate-limit');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api', limiter);
 
 // ! Body parser
 app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
 
 // ! Prevent paramater pollution
 app.use(hpp());

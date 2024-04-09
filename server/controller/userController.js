@@ -20,7 +20,7 @@ exports.deleteSingleUser = catchAsync(async (req, res) => {
   // Delete User
   await prisma.user.delete({
     where: {
-      id: Number(id),
+      id,
     },
   });
 
