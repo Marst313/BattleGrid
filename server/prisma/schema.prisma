@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,12 +7,54 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  role      Role      @default(USER)
+  profile   Profile?
+  Tourney   Tourney[]
+}
 
-model Player {
-  id                Int @id @default(autoincrement())
-  name              String
-  email             String
-  password          String
-  confirmPassword   String
-  createdAt         DateTime   @default(now())
+model Profile {
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique
+  photo  String @default("default.jpg")
+}
+
+model Tourney {
+  id         String      @id @default(uuid())
+  title      String
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  isDone     Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+  prizepool  BigInt
+  startDate  DateTime    @default(now())
+  endDate    DateTime    @default(now())
+  FormatTour FormatTour?
+}
+
+model FormatTour {
+  id               String  @id @default(uuid())
+  type             Type    @default(SINGLE_ELIMINATION)
+  include_3rdPlace Boolean @default(false)
+  paricipants      Int
+  tourney          Tourney @relation(fields: [tourneyId], references: [id], onDelete: Cascade)
+  tourneyId        String  @unique
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Type {
+  SINGLE_ELIMINATION
+  DOUBLE_ELIMINATION
+  ROUND_ROBIN
+  SWISS
 }
