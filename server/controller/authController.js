@@ -1,9 +1,8 @@
 const prisma = require('../db/prisma');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { hashPassword, checkPassword, exclude } = require('../utils/hashPassword');
 
-const jwt = require('jsonwebtoken');
+const { hashPassword, checkPassword, exclude, checkJWT, createJWT } = require('../utils');
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { name, email, password, confirmPassword, role } = req.body;
@@ -26,31 +25,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     },
   });
 
-  const token = jwt.sign(
-    {
-      data: newUser.id,
-    },
-    process.env.JSON_SECRET_KEY,
-    { expiresIn: process.env.JWT_EXPIRES_IN }
-  );
-
-  const cookieOptions = {
-    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
-    httpOnly: true,
-  };
-
-  res.cookie('jwt', token, cookieOptions);
-
-  res.status(200).json({
-    status: 'success',
-    message: 'New Account Created!',
-    newUser: {
-      name: newUser.name,
-      email: newUser.email,
-      role: newUser.role,
-      token,
-    },
-  });
+  createJWT(newUser, 200, res, 'New account created!');
 });
 
 exports.login = async (req, res, next) => {
@@ -68,10 +43,38 @@ exports.login = async (req, res, next) => {
   //! Check if password correct
   if (!user || !match) return next(new AppError('Wrong email or password!', 401));
 
-  const data = exclude(user, ['password', 'createdAt']);
-
-  res.status(200).json({
-    status: 'success',
-    data,
-  });
+  createJWT(user, 200, res, 'Login successfully!');
 };
+
+exports.protected = catchAsync(async (req, res, next) => {
+  let token;
+
+  // ! Check if there is a token in headers or cookies
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
+
+  if (!token) {
+    return next(new AppError('Unauthorized request', 403));
+  }
+
+  const id = await checkJWT(token);
+
+  const currentUser = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      profile: true,
+    },
+  });
+
+  const data = exclude(currentUser, ['password', 'createdAt']);
+
+  // ! Save user data
+  req.user = data;
+
+  next();
+});

@@ -9,6 +9,6 @@ router.post('/login', authController.login);
 
 router.delete('/:id', userController.deleteSingleUser);
 
-router.get('/', userController.getAllUser);
+router.get('/', authController.protected, userController.getAllUser);
 
 module.exports = router;
