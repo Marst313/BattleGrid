@@ -1,6 +1,7 @@
 const prisma = require('../db/prisma');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const jwt = require('jsonwebtoken');
 
 const { hashPassword, checkPassword, exclude, checkJWT, createJWT } = require('../utils');
 
@@ -28,7 +29,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   createJWT(newUser, 200, res, 'New account created!');
 });
 
-exports.login = async (req, res, next) => {
+exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   //! Check if there is a email and password
@@ -44,6 +45,14 @@ exports.login = async (req, res, next) => {
   if (!user || !match) return next(new AppError('Wrong email or password!', 401));
 
   createJWT(user, 200, res, 'Login successfully!');
+});
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
 };
 
 exports.protected = catchAsync(async (req, res, next) => {
@@ -78,3 +87,12 @@ exports.protected = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(new AppError('You do not have permission to perform this action', 403));
+    }
+    next();
+  };
+};

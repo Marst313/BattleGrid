@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
+// ! # PASSWORD
 exports.hashPassword = async (password) => {
   try {
     const saltRounds = 12;
@@ -27,6 +28,7 @@ exports.exclude = (user, keys) => {
   return Object.fromEntries(Object.entries(user).filter(([key]) => !keys.includes(key)));
 };
 
+// ! # JSON WEB TOKEN
 exports.createJWT = async (user, statusCode, res, message) => {
   const token = jwt.sign(
     {
@@ -40,6 +42,8 @@ exports.createJWT = async (user, statusCode, res, message) => {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
     httpOnly: true,
   };
+
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
 

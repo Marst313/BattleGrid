@@ -22,7 +22,7 @@ model Profile {
   id     String @id @default(uuid())
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique
-  photo  String @default("default.jpg")
+  photo  String @default("default.jpeg")
 }
 
 model Tourney {
@@ -32,19 +32,21 @@ model Tourney {
   userId     String
   isDone     Boolean     @default(false)
   createdAt  DateTime    @default(now())
-  prizepool  BigInt
+  prizepool  Float
   startDate  DateTime    @default(now())
   endDate    DateTime    @default(now())
+  thumbnail  String      @default("default.jpeg")
   FormatTour FormatTour?
 }
 
 model FormatTour {
-  id               String  @id @default(uuid())
-  type             Type    @default(SINGLE_ELIMINATION)
-  include_3rdPlace Boolean @default(false)
-  paricipants      Int
-  tourney          Tourney @relation(fields: [tourneyId], references: [id], onDelete: Cascade)
-  tourneyId        String  @unique
+  id                  String  @id @default(uuid())
+  type                Type    @default(SINGLE_ELIMINATION)
+  include_3rdPlace    Boolean @default(false)
+  currentParticipants Int     @default(0)
+  maxParicipants      Int
+  tourney             Tourney @relation(fields: [tourneyId], references: [id], onDelete: Cascade)
+  tourneyId           String  @unique
 }
 
 enum Role {

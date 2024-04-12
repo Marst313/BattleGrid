@@ -1,12 +1,14 @@
-const userRouter = require('./routes/userRoutes');
-const globalErrorHandle = require('./controller/errorController');
-const AppError = require('./utils/appError');
-
 const hpp = require('hpp');
 const helmet = require('helmet');
 const express = require('express');
 const { rateLimit } = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
+
+const userRouter = require('./routes/userRoutes');
+const competitionRouter = require('./routes/competitionRoutes');
+
+const globalErrorHandle = require('./controller/errorController');
+const AppError = require('./utils/appError');
 
 const app = express();
 
@@ -31,6 +33,7 @@ app.use(hpp());
 
 // ! Routes
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/competition', competitionRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Cant find ${req.originalUrl} on this server`));
