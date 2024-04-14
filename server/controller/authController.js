@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 exports.signup = catchAsync(async (req, res, next) => {
   const { name, email, password, confirmPassword, role } = req.body;
-
+ console.log(req.body)
   if (password !== confirmPassword) {
     return next(new AppError('Passwords do not match', 400));
   }
@@ -55,7 +55,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
-
+console.log(req.body)
   //! Check if there is a email and password
   if (!email || !password) return next(new AppError('Please provide email and password', 400));
 
