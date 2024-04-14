@@ -3,7 +3,6 @@ const multer = require('multer');
 const prisma = require('../db/prisma');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const { getImageUrlFromStorage } = require('../middleware/uploadImageFirebase');
 
 const multerStorage = multer.memoryStorage();
 
@@ -23,6 +22,7 @@ exports.uploadUserPhoto = upload.single('photo');
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // Save url to prisma
+
   await prisma.user.update({
     where: { id: req.user.id },
     data: {

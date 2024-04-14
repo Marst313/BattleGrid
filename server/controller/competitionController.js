@@ -1,6 +1,24 @@
+const multer = require('multer');
+
 const prisma = require('../db/prisma');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images!'), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+exports.uploadThumbnailPhoto = upload.single('thumbnail');
 
 exports.createNewCompetition = catchAsync(async (req, res, next) => {
   const { title, prizepool, startDate, endDate, type, include_3rdPlace, maxParicipants } = req.body;
@@ -83,6 +101,20 @@ exports.updateCompetition = catchAsync(async (req, res, next) => {
 
   if (currentParticipants > maxParicipants) return next(new AppError('Current participants is higher than maximum!', 400));
 
+  /* {
+    "title":"Update competition",
+    "prizepool":10,
+    "startDate":"2024-05-10T15:00:00Z",
+    "endDate":"2024-05-15T15:00:00Z",
+    "type":"SWISS",
+    "include_3rdPlace":true,
+    "currentParticipants":5,
+    "maxParicipants":5
+}
+ */
+
+  // req.file.path = 'thumbnail/';
+
   const updateUser = await prisma.tourney.update({
     where: {
       id,
@@ -92,6 +124,7 @@ exports.updateCompetition = catchAsync(async (req, res, next) => {
       prizepool,
       startDate,
       endDate,
+      thumbnail: req.imageUrl,
 
       FormatTour: {
         update: {

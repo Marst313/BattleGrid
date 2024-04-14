@@ -22,7 +22,7 @@ model Profile {
   id     String @id @default(uuid())
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @unique
-  photo  String @default("default.jpeg")
+  photo  String @default("https://firebasestorage.googleapis.com/v0/b/battlegrid-c3f07.appspot.com/o/users%2Fdefault.jpg?alt=media")
 }
 
 model Tourney {
@@ -35,7 +35,7 @@ model Tourney {
   prizepool  Float
   startDate  DateTime    @default(now())
   endDate    DateTime    @default(now())
-  thumbnail  String      @default("default.jpeg")
+  thumbnail  String      @default("https://firebasestorage.googleapis.com/v0/b/battlegrid-c3f07.appspot.com/o/thumbnails%2Fdefault%20.jpg?alt=media")
   FormatTour FormatTour?
 }
 
@@ -47,6 +47,7 @@ model FormatTour {
   maxParicipants      Int
   tourney             Tourney @relation(fields: [tourneyId], references: [id], onDelete: Cascade)
   tourneyId           String  @unique
+  game                Game    @default(dota_2)
 }
 
 enum Role {
@@ -59,4 +60,27 @@ enum Type {
   DOUBLE_ELIMINATION
   ROUND_ROBIN
   SWISS
+}
+
+enum Game {
+  counter_strike_global_offensive
+  valorant
+  league_of_legends
+  dota_2
+  overwatch
+  fortnite
+  apex_legends
+  rainbow_six_siege
+  call_of_duty_warzone
+  rocket_league
+  hearthstone
+  pubg_mobile
+  super_smash_bros_ultimate
+  fifa
+  tekken_7
+  street_fighter_v
+  starcraft_ii
+  mortal_kombat_11
+  rainbow_six
+  dead_by_daylight
 }
