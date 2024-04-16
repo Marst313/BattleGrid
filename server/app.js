@@ -11,6 +11,9 @@ const AppError = require('./utils/appError');
 
 const app = express();
 
+//? Validator email and etc
+//?
+
 // ! Set security HTTP headers
 app.use(helmet());
 
