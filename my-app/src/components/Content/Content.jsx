@@ -8,7 +8,7 @@ import bracket from "@/asset/image/Onboarding.image/Bracket.png";
 import Carousel from "./Boarding/Caraousel";
 import Section from "./Section/Section";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const Content = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
@@ -39,9 +39,9 @@ const Content = () => {
         {showScrollButton && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-full shadow-lg focus:outline-none"
+            className="fixed bottom-4 right-4 bg-oren text-white px-4 py-2 rounded-full shadow-lg focus:outline-none"
           >
-            <FontAwesomeIcon icon={faArrowUp} />
+            <FontAwesomeIcon icon={faChevronUp} />
           </button>
         )}
       </div>
