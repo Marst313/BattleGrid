@@ -1,36 +1,82 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import discordLogo from "@/asset/image/login.image/discordLogo.png";
 import googleLogo from "@/asset/image/login.image/googleLogo.png";
 import icon_login from "@/asset/image/login.image/img.Logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/Button";
+import { HandleLogin } from "@/Service/API/auth/auth";
+import { message } from "antd";
 
 const FormLogin = () => {
+  const [formDatas, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formDatas.password < 1) {
+      message.info("password do not match")
+      return; 
+    }
+
+    try {
+
+      const response = await HandleLogin(formDatas);
+
+
+
+
+      message.success("Registrasi berhasil")
+      
+    } catch (error) {
+      message.error("Terjadi kesalahan pada server")
+      
+    }
+
+    
+   
+  };
+  
+
   return (
     <>
       <div className="mb-4 mt-6 flex justify-center">
         <Image src={icon_login} className="h-[157px] w-[239px]" />
       </div>
-      <form>
+      <form onSubmit={handleSubmit} >
         {/* Email */}
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block mb-1 font-normal text-sm text-gray-300"
+            className="mb-1 block text-sm font-normal text-gray-300"
           >
             Email
           </label>
           <input
             type="email"
             id="email"
-            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            name="email"
+            value={formDatas.email}
+            onChange={handleChange}
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="Your email"
             required
           />
         </div>
-
-        
 
         {/* Password */}
         <div className="mb-6">
@@ -43,7 +89,10 @@ const FormLogin = () => {
           <input
             type="password"
             id="password"
-            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            name="password"
+            onChange={handleChange}
+            value={formDatas.password}
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="•••••••••"
             required
           />
@@ -57,7 +106,7 @@ const FormLogin = () => {
           </Link>
         </div>
 
-        <Button text="Login" className="w-full bg-oren" />
+        <Button text="Login" className="w-full bg-oren" submit={handleSubmit} />
       </form>
 
       {/* Divider */}

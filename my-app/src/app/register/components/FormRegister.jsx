@@ -18,7 +18,7 @@ const FormRegister = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    role: selectedRole, // Set nilai awal role ke selectedRole
+    role: selectedRole, 
   });
 
   const setSelectedRoleAndFormData = (role) => {
@@ -33,7 +33,7 @@ const FormRegister = () => {
 
     if (formDatas.password !== formDatas.confirmPassword) {
       message.info("password do not match")
-      return; // Prevent form submission
+      return; 
     }
 
     try {
@@ -42,20 +42,15 @@ const FormRegister = () => {
 
 
 
-      console.log("Email:", formDatas.email);
-      console.log("Password:", formDatas.password);
-      console.log("Confirm Password:", formDatas.confirmPassword);
-      console.log("Selected Role:", selectedRole);
 
       message.success("Registrasi berhasil")
       
     } catch (error) {
+      message.error("Terjadi kesalahan pada server")
       
     }
 
-    // Mendapatkan nilai dari FormData
-
-    // Di sini Anda dapat menambahkan logika untuk mengirim data ke backend
+    
    
   };
 
@@ -81,12 +76,12 @@ const FormRegister = () => {
       </div>
       <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
       <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             htmlFor="email"
             className="mb-1 block text-sm font-normal text-gray-300"
-            className="mb-1 block text-sm font-normal text-gray-300"
+        
           >
             Email
           </label>
@@ -105,7 +100,7 @@ const FormRegister = () => {
           <label
             htmlFor="password"
             className="mb-1 block text-sm font-normal text-gray-300"
-            className="mb-1 block text-sm font-normal text-gray-300"
+       
           >
             Password
           </label>
@@ -125,7 +120,7 @@ const FormRegister = () => {
           <label
             htmlFor="confirmPassword"
             className="mb-1 block text-sm font-normal text-gray-300"
-            className="mb-1 block text-sm font-normal text-gray-300"
+     
           >
             Confirm Password
           </label>
@@ -143,7 +138,7 @@ const FormRegister = () => {
 
         <button
           type="submit"
-          onClick={handleSubmit}
+
           className="w-full rounded-md bg-oren px-4 py-3 text-sm font-bold text-white"
         >
           Create account
