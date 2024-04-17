@@ -22,7 +22,7 @@ body {
 }
 
 section {
-  @apply px-40 py-12;
+  @apply py-10 xl:px-40;
 }
 
 h1 {
@@ -37,8 +37,7 @@ h3 {
   @apply text-2xl;
 }
 
-.role-1,
-.role-2 input[type='radio']:after {
+input[type="radio"]:after {
   width: 15px;
   height: 15px;
   border-radius: 15px;
@@ -46,14 +45,13 @@ h3 {
   left: -1px;
   position: relative;
   background-color: #5f6369;
-  content: '';
+  content: "";
   display: inline-block;
   visibility: visible;
-  border: 2px solid red;
+  border: 2px solid white;
 }
 
-.role-1,
-.role-2 input[type='radio']:checked:after {
+input[type="radio"]:checked:after {
   width: 15px;
   height: 15px;
   border-radius: 15px;
@@ -61,7 +59,7 @@ h3 {
   left: -1px;
   position: relative;
   background-color: #fd7014;
-  content: '';
+  content: "";
   display: inline-block;
   visibility: visible;
   border: 2px solid white;
