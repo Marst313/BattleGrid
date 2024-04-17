@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
-import icon_discord from "@/asset/image/login.image/mingcute_discord-line.png";
-import icon_google from "@/asset/image/login.image/devicon_google.png";
-import icon_login from "@/asset/image/login.image/img.Logo.png";
-import Image from "next/image";
-import Link from "next/link";
-import Loginbanner from "./Banner";
+import React from 'react';
+import icon_discord from '@/asset/image/login.image/mingcute_discord-line.png';
+import icon_google from '@/asset/image/login.image/devicon_google.png';
+import icon_login from '@/asset/image/login.image/img.Logo.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import Loginbanner from './Banner';
 const Login = () => {
   return (
-    <div className="container mx-auto py-12">
+    <section className="mx-auto">
       <div className="flex justify-evenly h-screen">
         <div>
           <Loginbanner />
@@ -19,7 +19,9 @@ const Login = () => {
           <h2 className="text-2xl font-semibold mb-4">Login</h2>
           <div className="flex gap-2 items-center">
             <h1 className="text-sm text-gray-400">Dont have an account ?</h1>
-            <p className="text-base">Register</p>
+            <Link href="/register" className="text-base">
+              Register
+            </Link>
           </div>
 
           <div className="flex justify-center mt-6 mb-4">
@@ -27,47 +29,24 @@ const Login = () => {
           </div>
           <form>
             <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block mb-1 font-normal text-sm text-gray-300"
-              >
+              <label htmlFor="email" className="block mb-1 font-normal text-sm text-gray-300">
                 Email
               </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
-                placeholder="Your email"
-                required
-              />
+              <input type="email" id="email" className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren" placeholder="Your email" required />
             </div>
             <div className="mb-6 ">
-              <label
-                htmlFor="password"
-                className="block mb-1 font-normal text-sm text-gray-300"
-              >
+              <label htmlFor="password" className="block mb-1 font-normal text-sm text-gray-300">
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
-                placeholder="Your password"
-                required
-              />
+              <input type="password" id="password" className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren" placeholder="Your password" required />
             </div>
 
             <div className="flex justify-end py-2">
-              <Link href={"/"}>
-                <p className=" text-sm text-gray-500 font-medium">
-                  Forgot password ?
-                </p>
+              <Link href={'/'}>
+                <p className=" text-sm text-gray-500 font-medium">Forgot password ?</p>
               </Link>
             </div>
-            <button
-              type="submit"
-              className="bg-oren text-white w-full font-bold text-sm px-4 py-3 rounded-md"
-            >
+            <button type="submit" className="bg-oren text-white w-full font-bold text-sm px-4 py-3 rounded-md">
               Login
             </button>
           </form>
@@ -94,7 +73,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

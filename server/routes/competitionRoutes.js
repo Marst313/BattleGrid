@@ -1,14 +1,21 @@
 const express = require('express');
 
 const authController = require('../controller/authController');
-const { createNewCompetition, getAllCompetition, getSingleCompetition, updateCompetition, deleteCompetition } = require('../controller/competitionController');
+const { createNewCompetition, getAllCompetition, getSingleCompetition, updateCompetition, deleteCompetition, uploadThumbnailPhoto } = require('../controller/competitionController');
+const { uploadImageFirebase } = require('../middleware/uploadImageFirebase');
 
 const router = express.Router();
 
 router
   .route('/:id') //
   .get(getSingleCompetition)
-  .patch(authController.protected, authController.restrictTo('ADMIN'), updateCompetition)
+  .patch(
+    authController.protected, //
+    authController.restrictTo('ADMIN'),
+    uploadThumbnailPhoto,
+    uploadImageFirebase,
+    updateCompetition
+  )
   .delete(authController.protected, authController.restrictTo('ADMIN'), deleteCompetition);
 
 router

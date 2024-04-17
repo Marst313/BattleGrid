@@ -3,7 +3,6 @@ const helmet = require('helmet');
 const express = require('express');
 const { rateLimit } = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
-
 const userRouter = require('./routes/userRoutes');
 const competitionRouter = require('./routes/competitionRoutes');
 
@@ -11,6 +10,9 @@ const globalErrorHandle = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
 const app = express();
+
+//? Validator email and etc
+//?
 
 // ! Set security HTTP headers
 app.use(helmet());
