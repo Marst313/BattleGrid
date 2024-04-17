@@ -5,7 +5,6 @@ import Link from "next/link";
 import icon_discord from "@/asset/image/login.image/discordLogo.png";
 import icon_google from "@/asset/image/login.image/googleLogo.png";
 
-
 import Image from "next/image";
 import CheckedRole from "./CheckedRole";
 const FormRegister = () => {
@@ -20,24 +19,22 @@ const FormRegister = () => {
       <div className="mt-10 flex  gap-5">
         {/* Player */}
         <CheckedRole />
-        
 
         {/* Creator */}
-      
       </div>
-      <hr className="w-full h-[1px] mx-auto my-4 bg-abu border-0 rounded md:my-10 " />
+      <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
       <form>
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block mb-1 font-normal text-sm text-gray-300"
+            className="mb-1 block text-sm font-normal text-gray-300"
           >
             Email
           </label>
           <input
             type="email"
             id="email"
-            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="Your email"
             required
           />
@@ -45,14 +42,14 @@ const FormRegister = () => {
         <div className="mb-6 ">
           <label
             htmlFor="password"
-            className="block mb-1 font-normal text-sm text-gray-300"
+            className="mb-1 block text-sm font-normal text-gray-300"
           >
             Password
           </label>
           <input
             type="password"
             id="password"
-            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="Your password"
             required
           />
@@ -61,47 +58,51 @@ const FormRegister = () => {
         <div className="mb-6 ">
           <label
             htmlFor="confirmPassword"
-            className="block mb-1 font-normal text-sm text-gray-300"
+            className="mb-1 block text-sm font-normal text-gray-300"
           >
             Confirm Password
           </label>
           <input
             type="password"
             id="ConfirmPassword"
-            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="Confirm password"
             required
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-oren text-white w-full font-bold text-sm px-4 py-3 rounded-md"
-        >
-          Create account
-        </button>
+        <Button
+          text="Create account"
+          className="mt-10 w-full bg-oren  text-white hover:bg-oren2 "
+        />
       </form>
 
-      <div className="py-12">
-        <div className="mt-4 text-sm flex items-center ">
-          <div className="flex-grow border-t border-abu mr-2"></div>
-          <p className="text-center text-gray-400">Or</p>
-          <div className="flex-grow border-t border-abu ml-2"></div>
-        </div>
+      {/* Divider */}
+      <div className="mt-5 flex w-full items-center justify-between">
+        <hr className="w-[45%]" />
+        <p>Or</p>
+        <hr className="w-[45%]" />
       </div>
-      <div className="flex justify-center mt-2 gap-3">
-        <button className="bg-discord text-white text-sm px-4 py-2 rounded-lg mr-2 w-52 font-bold">
-          <div className="flex items-center justify-evenly">
-            <Image src={icon_discord} className="h-6 w-6" />
-            <p>Discord</p>
-          </div>
-        </button>
-        <button className="bg-white text-hitam px-4  text-sm py-2 rounded-lg  w-52 font-bold">
-          <div className="flex items-center justify-evenly">
-            <Image src={icon_google} className="h-6 w-6" />
-            <p>Google</p>
-          </div>
-        </button>
+
+      {/* Social Login*/}
+      <div className="mt-5 flex w-full justify-center gap-10 font-bold">
+        {/* Discord Button */}
+
+        <Button
+          src={discordLogo}
+          alt="discord logo"
+          text="Discord"
+          className="w-56 bg-discord text-white"
+        />
+
+        {/* Google Button */}
+
+        <Button
+          src={googleLogo}
+          alt="google logo"
+          text="Google"
+          className="w-56 bg-white text-abu"
+        />
       </div>
     </>
   );

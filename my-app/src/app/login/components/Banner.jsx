@@ -18,6 +18,12 @@ const Loginbanner = () => {
         Simplifies tournament initiation with facilitating seamless tournament
         setup.
       </p>
+
+      <div className="mt-10 flex items-center justify-center gap-5">
+        <button className={`dot h-5 w-5 rounded-full bg-white`}></button>
+        <button className={`dot h-5 w-5 rounded-full bg-white`}></button>
+        <button className={`dot h-5 w-5 rounded-full bg-white`}></button>
+      </div>
     </div>
   );
 };
