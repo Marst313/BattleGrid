@@ -22,7 +22,7 @@ const page = () => {
           Dont have an account ?
           <Link
             href="/register"
-            className="text-base font-bold text-white hover:text-white/80"
+            className="text-base font-bold text-white hover:text-white/80 ml-2"
           >
             Register
           </Link>

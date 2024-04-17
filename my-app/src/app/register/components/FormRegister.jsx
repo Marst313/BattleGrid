@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import icon_discord from "@/asset/image/login.image/mingcute_discord-line.png";
-import icon_google from "@/asset/image/login.image/devicon_google.png";
-import icon_login from "@/asset/image/login.image/img.Logo.png";
+import icon_discord from "@/asset/image/login.image/discordLogo.png";
+import icon_google from "@/asset/image/login.image/googleLogo.png";
+
 
 import Image from "next/image";
 import CheckedRole from "./CheckedRole";

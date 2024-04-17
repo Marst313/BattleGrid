@@ -1,19 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import "@/style/index.css";
+
 const CheckedRole = () => {
   const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
   const [isActiveCreator, setIsActiveCreator] = useState(false);
 
   const handlePlayerClick = () => {
-    setIsActivePlayer(true); // Menetapkan Player sebagai yang aktif
-    setIsActiveCreator(false); // Reset status Tournament Creator
+    setIsActivePlayer(true); 
+    setIsActiveCreator(false); 
   };
 
   const handleCreatorClick = () => {
-    setIsActiveCreator(true); // Menetapkan Tournament Creator sebagai yang aktif
-    setIsActivePlayer(false); // Reset status Player
+    setIsActiveCreator(true); 
+    setIsActivePlayer(false); 
   };
 
   return (

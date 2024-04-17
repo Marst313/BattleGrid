@@ -13,21 +13,23 @@ const FormLogin = () => {
       </div>
       <form>
         {/* Email */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label
             htmlFor="email"
-            className="mb-2 block text-sm font-medium text-white"
+            className="block mb-1 font-normal text-sm text-gray-300"
           >
             Email
           </label>
           <input
             type="email"
             id="email"
-            className="block w-full rounded-md bg-white p-2.5 text-sm text-abu1 placeholder-gray-400 ring-2 ring-oren focus:bg-gray-700 focus:text-white focus:outline-none focus:ring-white"
-            placeholder="user@gmail.com"
+            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
+            placeholder="Your email"
             required
           />
         </div>
+
+        
 
         {/* Password */}
         <div className="mb-6">
@@ -40,7 +42,7 @@ const FormLogin = () => {
           <input
             type="password"
             id="password"
-            className="block w-full rounded-md bg-white p-2.5 text-sm text-abu1 placeholder-gray-400 ring-2 ring-oren focus:bg-gray-700 focus:text-white focus:outline-none focus:ring-white"
+            className="w-full border rounded-md px-3 py-2 text-gray-500 text-sm focus:outline-oren"
             placeholder="•••••••••"
             required
           />
