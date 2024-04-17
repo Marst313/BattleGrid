@@ -1,16 +1,17 @@
 const hpp = require('hpp');
 const helmet = require('helmet');
+const cors = require('cors');
 const express = require('express');
 const { rateLimit } = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
+
 const userRouter = require('./routes/userRoutes');
 const competitionRouter = require('./routes/competitionRoutes');
-
 const globalErrorHandle = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
 const app = express();
-const cors = require('cors')
+
 //? Validator email and etc
 //?
 

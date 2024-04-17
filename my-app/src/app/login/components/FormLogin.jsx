@@ -16,7 +16,6 @@ const FormLogin = () => {
     password: "",
   });
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -29,35 +28,25 @@ const FormLogin = () => {
     e.preventDefault();
 
     if (formDatas.password < 1) {
-      message.info("password do not match")
-      return; 
+      message.info("password do not match");
+      return;
     }
 
     try {
-
       const response = await HandleLogin(formDatas);
 
-
-
-
-      message.success("Registrasi berhasil")
-      
+      message.success("Registrasi berhasil");
     } catch (error) {
-      message.error("Terjadi kesalahan pada server")
-      
+      message.error("Terjadi kesalahan pada server");
     }
-
-    
-   
   };
-  
 
   return (
     <>
       <div className="mb-4 mt-6 flex justify-center">
         <Image src={icon_login} className="h-[157px] w-[239px]" />
       </div>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         {/* Email */}
         <div className="mb-4">
           <label
@@ -89,10 +78,10 @@ const FormLogin = () => {
           <input
             type="password"
             id="password"
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             name="password"
             onChange={handleChange}
             value={formDatas.password}
-            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="•••••••••"
             required
           />
