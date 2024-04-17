@@ -79,10 +79,12 @@ const FormRegister = () => {
         />
       </div>
       <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
+      <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
       <form>
         <div className="mb-4">
           <label
             htmlFor="email"
+            className="mb-1 block text-sm font-normal text-gray-300"
             className="mb-1 block text-sm font-normal text-gray-300"
           >
             Email
@@ -102,6 +104,7 @@ const FormRegister = () => {
           <label
             htmlFor="password"
             className="mb-1 block text-sm font-normal text-gray-300"
+            className="mb-1 block text-sm font-normal text-gray-300"
           >
             Password
           </label>
@@ -120,6 +123,7 @@ const FormRegister = () => {
         <div className="mb-6 ">
           <label
             htmlFor="confirmPassword"
+            className="mb-1 block text-sm font-normal text-gray-300"
             className="mb-1 block text-sm font-normal text-gray-300"
           >
             Confirm Password
