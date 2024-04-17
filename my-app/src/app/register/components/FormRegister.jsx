@@ -12,8 +12,9 @@ import { HandleRegister } from "@/Service/API/auth/auth";
 const FormRegister = () => {
   const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
   const [isActiveCreator, setIsActiveCreator] = useState(false);
-  const [selectedRole, setSelectedRole] = useState("player");
+  const [selectedRole, setSelectedRole] = useState("USER");
   const [formDatas, setFormData] = useState({
+    name:"genta",
     email: "",
     password: "",
     confirmPassword: "",

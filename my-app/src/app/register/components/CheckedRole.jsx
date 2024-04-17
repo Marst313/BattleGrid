@@ -12,10 +12,10 @@ const CheckedRole = ({
 }) => {
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
-    if (e.target.value === "player") {
+    if (e.target.value === "USER") {
       setIsActivePlayer(true);
       setIsActiveCreator(false);
-    } else if (e.target.value === "creator") {
+    } else if (e.target.value === "ADMIN") {
       setIsActiveCreator(true);
       setIsActivePlayer(false);
     }
@@ -36,8 +36,8 @@ const CheckedRole = ({
             isActivePlayer ? "radio-active" : ""
           }`}
           onClick={handleRoleChange}
-          value="player"
-          checked={selectedRole === "player"}
+          value="USER"
+          checked={selectedRole === "USER"}
         />
         <label
           htmlFor="role-1"
@@ -62,8 +62,8 @@ const CheckedRole = ({
             isActiveCreator ? "radio-active" : ""
           }`}
           onClick={handleRoleChange}
-          value="creator"
-          checked={selectedRole === "creator"}
+          value="ADMIN"
+          checked={selectedRole === "ADMIN"}
         />
         <label
           htmlFor="role-2"
