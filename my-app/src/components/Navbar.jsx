@@ -14,7 +14,7 @@ const Navbar = () => {
       <Image src={icon} className=" w-24" />
       <Menu />
 
-      <div className="flex gap-8">
+      <div className="flex gap-8 items-center">
         <Link href={'/login'}>
           <p className="bg-oren px-4 py-1 rounded-md">Sign In</p>
         </Link>
