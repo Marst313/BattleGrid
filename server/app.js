@@ -10,12 +10,13 @@ const globalErrorHandle = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
 const app = express();
-
+const cors = require('cors')
 //? Validator email and etc
 //?
 
 // ! Set security HTTP headers
 app.use(helmet());
+app.use(cors());
 
 // ! Limiter request
 const limiter = rateLimit({
