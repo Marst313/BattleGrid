@@ -2,24 +2,29 @@
 
 import React, { useState } from "react";
 
-const CheckedRole = () => {
-  const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
-  const [isActiveCreator, setIsActiveCreator] = useState(false);
-
-  const handlePlayerClick = () => {
-    setIsActivePlayer(true); 
-    setIsActiveCreator(false); 
-  };
-
-  const handleCreatorClick = () => {
-    setIsActiveCreator(true); 
-    setIsActivePlayer(false); 
+const CheckedRole = ({
+  isActiveCreator,
+  isActivePlayer,
+  selectedRole,
+  setIsActiveCreator,
+  setIsActivePlayer,
+  setSelectedRole,
+}) => {
+  const handleRoleChange = (e) => {
+    setSelectedRole(e.target.value);
+    if (e.target.value === "player") {
+      setIsActivePlayer(true);
+      setIsActiveCreator(false);
+    } else if (e.target.value === "creator") {
+      setIsActiveCreator(true);
+      setIsActivePlayer(false);
+    }
   };
 
   return (
     <>
       <div
-        className={`flex items-center ps-4 border rounded w-full ${
+        className={`flex w-full items-center rounded border ps-4 ${
           isActivePlayer ? "border-oren" : "border-gray-300"
         }`}
       >
@@ -27,15 +32,16 @@ const CheckedRole = () => {
           id="role-1"
           type="radio"
           name="bordered-radio"
-          className={`w-4 h-4 radio-custom ${
+          className={`radio-custom h-4 w-4 ${
             isActivePlayer ? "radio-active" : ""
           }`}
-          onClick={handlePlayerClick}
-          checked={isActivePlayer}
+          onClick={handleRoleChange}
+          value="player"
+          checked={selectedRole === "player"}
         />
         <label
           htmlFor="role-1"
-          className={`w-full py-4 ms-2 text-sm font-medium ${
+          className={`ms-2 w-full py-4 text-sm font-medium ${
             isActivePlayer ? "text-oren" : "text-gray-300"
           }`}
         >
@@ -44,7 +50,7 @@ const CheckedRole = () => {
       </div>
 
       <div
-        className={`flex items-center ps-4 border rounded w-full ${
+        className={`flex w-full items-center rounded border ps-4 ${
           isActiveCreator ? "border-oren" : "border-gray-300"
         }`}
       >
@@ -52,15 +58,16 @@ const CheckedRole = () => {
           id="role-2"
           type="radio"
           name="bordered-radio"
-          className={`w-4 h-4 radio-custom ${
+          className={`radio-custom h-4 w-4 ${
             isActiveCreator ? "radio-active" : ""
           }`}
-          onClick={handleCreatorClick}
-          checked={isActiveCreator}
+          onClick={handleRoleChange}
+          value="creator"
+          checked={selectedRole === "creator"}
         />
         <label
           htmlFor="role-2"
-          className={`w-full py-4 ms-2 text-sm font-medium ${
+          className={`ms-2 w-full py-4 text-sm font-medium ${
             isActiveCreator ? "text-oren" : "text-white"
           }`}
         >

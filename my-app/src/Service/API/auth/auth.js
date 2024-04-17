@@ -19,12 +19,10 @@ export const HandleLogin = async () => {
     }
 }
 
-export const HandleRegister = async () => {
+export const HandleRegister = async (data) => {
     try {
-        const response = await axiosInstance.post("/signup",{},{
-            headers:{
-                Authorization:""
-            }
+        const response = await axiosInstance.post("/signup",data,{
+          
         })
 
         return response.data
