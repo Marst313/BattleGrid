@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
 import React from "react";
 
-import Footer from "@/components/Footer";
+
 import Content from "@/components/Content/Content";
+import ScrollOnTop from "@/components/ScrollOnTop";
 
 const page = () => {
   return (
@@ -10,6 +11,7 @@ const page = () => {
       <Navbar />
 
       <Content />
+      <ScrollOnTop />
     </div>
   );
 };
