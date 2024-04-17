@@ -9,11 +9,15 @@ import icon_login from "@/asset/image/login.image/img.Logo.png";
 import Image from "next/image";
 import CheckedRole from "./CheckedRole";
 const FormRegister = () => {
-  const [checked, setChecked] = useState(true);
+  const [selectedRole, setSelectedRole] = useState("player");
+
+  const handleRoleChange = (e) => {
+    setSelectedRole(e.target.value);
+  };
 
   return (
     <>
-      <div className="flex w-full mt-10 gap-5">
+      <div className="mt-10 flex  gap-5">
         {/* Player */}
         <CheckedRole />
         
