@@ -16,8 +16,10 @@ const cors = require('cors')
 
 // ! Set security HTTP headers
 app.use(helmet());
-app.use(cors());
-
+app.use(cors({
+  origin: true, // Izinkan semua asal
+  credentials: true // Izinkan kredensial (cookie, header Authorization, dll.)
+}));
 // ! Limiter request
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 60 minutes
