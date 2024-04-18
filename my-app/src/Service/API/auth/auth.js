@@ -2,14 +2,7 @@ import axiosInstance from "@/Service/Config/Instance";
 
 export const HandleLogin = async (data) => {
   try {
-    const response = await axiosInstance.post(
-      "/login",
-      data,
-      {
-        withCredentials: true, 
-       
-      },
-    );
+    const response = await axiosInstance.post("/login", data);
 
     return response.data;
   } catch (error) {
