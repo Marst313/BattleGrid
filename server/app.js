@@ -17,7 +17,15 @@ const app = express();
 
 // ! Set security HTTP headers
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:3001',
+  })
+);
+
+// ! Option Cors
+app.options('*', cors());
 
 // ! Limiter request
 const limiter = rateLimit({
