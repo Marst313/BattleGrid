@@ -10,6 +10,7 @@ const page = () => {
       <Navbar />
 
       <Content />
+
       <ScrollOnTop />
     </div>
   );

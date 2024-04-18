@@ -6,7 +6,8 @@ export const HandleLogin = async (data) => {
       withCredentials: true,
     });
 
-    console.log(response.data);
+    document.cookie = `jwt=${response.data.token}; expires=${new Date(Date.now() + 24 * 60 * 60 * 1000).toUTCString()}; path=/`;
+
     return response.data;
   } catch (error) {
     console.log(error);

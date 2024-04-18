@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
-import discordLogo from "@/asset/image/login.image/discordLogo.png";
-import googleLogo from "@/asset/image/login.image/googleLogo.png";
-import icon_login from "@/asset/image/login.image/img.Logo.png";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Button";
-import { HandleLogin } from "@/Service/API/auth/auth";
+import { useRouter } from "next/navigation";
 import { message } from "antd";
 
+import { HandleLogin } from "@/Service/API/auth/auth";
+import googleLogo from "@/asset/image/login.image/googleLogo.png";
+import icon_login from "@/asset/image/login.image/img.Logo.png";
+import discordLogo from "@/asset/image/login.image/discordLogo.png";
+import Button from "@/components/Button";
+import { getCookie } from "@/utils";
+
 const FormLogin = () => {
+  const router = useRouter();
   const [formDatas, setFormData] = useState({
     email: "",
     password: "",
@@ -27,19 +31,21 @@ const FormLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formDatas.password < 1) {
-      message.info("password do not match");
-      return;
-    }
-
     try {
       const response = await HandleLogin(formDatas);
 
-      message.success("Registrasi berhasil");
+      router.push("/");
+      message.success(response.message);
     } catch (error) {
-      message.error("Terjadi kesalahan pada server");
+      message.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    const jwt = getCookie("jwt");
+
+    if (jwt) router.push("/dashboard");
+  }, []);
 
   return (
     <>

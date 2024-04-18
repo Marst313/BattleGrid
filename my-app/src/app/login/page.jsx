@@ -2,6 +2,7 @@ import React from "react";
 import Loginbanner from "./components/Banner";
 import Link from "next/link";
 import FormLogin from "./components/FormLogin";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "Battle Grid - Login",
@@ -22,7 +23,7 @@ const page = () => {
           Dont have an account ?
           <Link
             href="/register"
-            className="text-base font-bold text-white hover:text-white/80 ml-2"
+            className="ml-2 text-base font-bold text-white hover:text-white/80"
           >
             Register
           </Link>

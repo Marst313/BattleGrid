@@ -1,22 +1,39 @@
+const validator = require('validator');
+
 const prisma = require('../db/prisma');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const jwt = require('jsonwebtoken');
 
 const { hashPassword, checkPassword, exclude, checkJWT, createJWT } = require('../utils');
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const { name, email, password, confirmPassword, role } = req.body;
- console.log(req.body)
+  const { email, password, confirmPassword, role } = req.body;
+
+  // ! Check all fields should not be empty
+  if (!password || !email || !role || !confirmPassword) return next(new AppError('Fill out all fields!', 400));
+
+  // ! Check if this is valid email
+  if (!validator.isEmail(email)) return next(new AppError('Please provide a valid email!', 400));
+
+  // ! Check if password did not match
   if (password !== confirmPassword) {
-    return next(new AppError('Passwords do not match', 400));
+    return next(new AppError('Passwords do not match!', 400));
   }
+
+  // ! Check if email already exist
+  const user = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
+
+  if (user) return next(new AppError('Email already used!', 409));
 
   const encryptPassword = await hashPassword(password);
 
   const newUser = await prisma.user.create({
     data: {
-      name,
+      name: email.split('@')[0],
       email,
       password: encryptPassword,
       role,
@@ -31,9 +48,12 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-console.log(req.body)
+
   //! Check if there is a email and password
   if (!email || !password) return next(new AppError('Please provide email and password', 400));
+
+  // ! Check if this is valid email
+  if (!validator.isEmail(email)) return next(new AppError('Please provide a valid email!', 400));
 
   const user = await prisma.user.findUnique({
     where: { email },
@@ -41,8 +61,11 @@ console.log(req.body)
 
   const match = await checkPassword(password, user?.password);
 
+  //! Check if there is no email
+  if (!user) return next(new AppError('Please sign up first!'));
+
   //! Check if password correct
-  if (!user || !match) return next(new AppError('Wrong email or password!', 401));
+  if (!match) return next(new AppError('Wrong email or password!', 401));
 
   createJWT(user, 200, res, 'Login successfully!');
 });
