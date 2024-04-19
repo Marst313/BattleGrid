@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Loginbanner = () => {
   return (
-    <div className="relative hidden w-[30rem]  flex-col rounded-2xl bg-gradient-to-b from-oren2 to-oren p-10 xl:flex">
+    <div className="relative hidden h-[50rem] w-[30rem] rounded-2xl bg-gradient-to-b from-oren2 to-oren p-10 xl:block">
       <h3>Battle Grid</h3>
       <Image
         src={cartoon}

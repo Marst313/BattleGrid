@@ -3,8 +3,7 @@
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import DropdownCompetition from "./DropdownCompetition";
 
 const Menu = () => {
   const path = usePathname();
@@ -12,38 +11,27 @@ const Menu = () => {
   return (
     <div>
       {" "}
-      <div className="flex gap-10 ">
+      <div className="flex items-center gap-10">
         <Link href={"/"}>
           <p
             className={`${
               path === "/"
-                ? "font-semibold border-b-2 border-oren w-fit text-center"
-                : "text-gray-300 font-light"
+                ? "w-fit border-b-2 border-oren text-center font-semibold"
+                : "font-light text-gray-300"
             }`}
           >
             Home
           </p>
         </Link>
 
-        <Link href={"/competition"}>
-          <div
-            className={`${
-              path === "/competition" 
-                ? "font-semibold border-b-2 border-oren w-fit text-center"
-                : "text-gray-300 font-light"
-            } flex items-center gap-2`}
-          >
-            <p>Competition</p>
-            <FontAwesomeIcon icon={faCaretDown} />
-          </div>
-        </Link>
+        <DropdownCompetition />
 
         <Link href={"/guide"}>
           <p
             className={`${
               path === "/guide"
-                ? "font-semibold border-b-2 border-oren w-fit text-center"
-                : "text-gray-300 font-light"
+                ? "w-fit border-b-2 border-oren text-center font-semibold"
+                : "font-light text-gray-300"
             }`}
           >
             Guide
@@ -54,8 +42,8 @@ const Menu = () => {
           <p
             className={`${
               path === "/about"
-                ? "font-semibold border-b-2 border-oren w-fit text-center"
-                : "text-gray-300 font-light"
+                ? "w-fit border-b-2 border-oren text-center font-semibold"
+                : "font-light text-gray-300"
             }`}
           >
             About

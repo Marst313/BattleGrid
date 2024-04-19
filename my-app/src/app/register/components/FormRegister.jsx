@@ -5,12 +5,12 @@ import React, { useEffect, useState } from "react";
 import icon_discord from "@/asset/image/login.image/discordLogo.png";
 import icon_google from "@/asset/image/login.image/googleLogo.png";
 
-import Image from "next/image";
 import CheckedRole from "./CheckedRole";
 import { message } from "antd";
 import { HandleRegister } from "@/Service/API/auth/auth";
 import { getCookie } from "@/utils";
 import { useRouter } from "next/navigation";
+import Button from "@/components/Button";
 const FormRegister = () => {
   const router = useRouter();
   const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
@@ -36,8 +36,17 @@ const FormRegister = () => {
 
     try {
       const response = await HandleRegister(formDatas);
+      message.success(response.message);
 
-      message.success("Registrasi berhasil");
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        role: "USER",
+      });
+
+      router.push("/dashboard");
     } catch (error) {
       message.error(error.response.data.message);
     }
@@ -136,26 +145,30 @@ const FormRegister = () => {
         </button>
       </form>
 
-      <div className="py-12">
-        <div className="mt-4 flex items-center text-sm ">
-          <div className="mr-2 flex-grow border-t border-abu"></div>
-          <p className="text-center text-gray-400">Or</p>
-          <div className="ml-2 flex-grow border-t border-abu"></div>
-        </div>
+      <div className="mt-5 flex w-full items-center justify-between">
+        <hr className="w-[45%]" />
+        <p>Or</p>
+        <hr className="w-[45%]" />
       </div>
-      <div className="mt-2 flex justify-center gap-3">
-        <button className="mr-2 w-52 rounded-lg bg-discord px-4 py-2 text-sm font-bold text-white">
-          <div className="flex items-center justify-evenly">
-            <Image src={icon_discord} className="h-6 w-6" />
-            <p>Discord</p>
-          </div>
-        </button>
-        <button className="w-52 rounded-lg bg-white  px-4 py-2 text-sm  font-bold text-hitam">
-          <div className="flex items-center justify-evenly">
-            <Image src={icon_google} className="h-6 w-6" />
-            <p>Google</p>
-          </div>
-        </button>
+
+      <div className="mt-5 flex w-full justify-center gap-10 font-bold">
+        {/* Discord Button */}
+
+        <Button
+          src={icon_discord}
+          alt="discord logo"
+          text="Discord"
+          className="w-56 bg-discord text-white"
+        />
+
+        {/* Google Button */}
+
+        <Button
+          src={icon_google}
+          alt="google logo"
+          text="Google"
+          className="w-56 bg-white text-abu"
+        />
       </div>
     </>
   );

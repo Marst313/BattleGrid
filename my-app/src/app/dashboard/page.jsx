@@ -2,15 +2,16 @@
 "use client"
 import { getCookie } from "@/utils";
 import React from "react";
+import Dashboard from "./components/Dashboard";
 
 
 const page = () => {
   const get = getCookie("jwt")
   console.log(get)
   return (
-    <div>
-      <h1>Hello from the dashboard</h1>
-    </div>
+    <section className="flex w-full">
+      <Dashboard />
+    </section>
   );
 };
 

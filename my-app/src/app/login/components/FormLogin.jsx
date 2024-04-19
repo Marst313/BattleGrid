@@ -55,7 +55,11 @@ const FormLogin = () => {
   return (
     <>
       <div className="mb-4 mt-6 flex justify-center">
-        <Image src={icon_login} className="h-[157px] w-[239px]" />
+        <Image
+          src={icon_login}
+          alt="battlegrid logo"
+          className="h-[157px] w-[239px]"
+        />
       </div>
       <form onSubmit={handleSubmit}>
         {/* Email */}

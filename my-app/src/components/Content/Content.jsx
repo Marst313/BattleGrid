@@ -10,11 +10,15 @@ import Section from "./Section/Section";
 
 const Content = () => {
   return (
-    <div className="relative h-dvh">
+    <div className="relative mt-20 h-dvh">
       <div className="absolute inset-0 z-10  ">
         <div className="flex justify-center py-12">
           <OnBoarding />
-          <Image src={bracket} className=" w-auto pr-4"></Image>
+          <Image
+            alt="human with gun"
+            src={bracket}
+            className=" w-auto pr-4"
+          ></Image>
         </div>
         <Section />
       </div>
