@@ -18,11 +18,20 @@ exports.signup = catchAsync(async (req, res, next) => {
     return next(new AppError("Passwords do not match", 400));
   }
 
+  // ! Check if email already exist
+  const user = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
+
+  if (user) return next(new AppError('Email already used!', 409));
+
   const encryptPassword = await hashPassword(password);
 
   const newUser = await prisma.user.create({
     data: {
-      name,
+      name: email.split('@')[0],
       email,
       password: encryptPassword,
       role,
@@ -47,6 +56,9 @@ exports.login = catchAsync(async (req, res, next) => {
   });
 
   const match = await checkPassword(password, user?.password);
+
+  //! Check if there is no email
+  if (!user) return next(new AppError('Please sign up first!'));
 
   //! Check if password correct
   if (!user || !match)

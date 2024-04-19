@@ -1,16 +1,18 @@
 const hpp = require('hpp');
 const helmet = require('helmet');
+const cors = require('cors');
 const express = require('express');
 const { rateLimit } = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
+const xss = require('xss-clean');
+
 const userRouter = require('./routes/userRoutes');
 const competitionRouter = require('./routes/competitionRoutes');
-
 const globalErrorHandle = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
 const app = express();
-const cors = require('cors')
+
 //? Validator email and etc
 //?
 
@@ -35,6 +37,9 @@ app.use(cookieParser());
 
 // ! Prevent paramater pollution
 app.use(hpp());
+
+// ! Prevent xss sanitization
+app.use(xss());
 
 // ! Routes
 app.use('/api/v1/user', userRouter);

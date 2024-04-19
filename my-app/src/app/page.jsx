@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import React from "react";
 
-
 import Content from "@/components/Content/Content";
 import ScrollOnTop from "@/components/ScrollOnTop";
 
@@ -11,6 +10,7 @@ const page = () => {
       <Navbar />
 
       <Content />
+
       <ScrollOnTop />
     </div>
   );

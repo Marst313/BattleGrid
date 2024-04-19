@@ -1,22 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import discordLogo from "@/asset/image/login.image/discordLogo.png";
-import googleLogo from "@/asset/image/login.image/googleLogo.png";
-import icon_login from "@/asset/image/login.image/img.Logo.png";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Button";
-import { HandleLogin } from "@/Service/API/auth/auth";
+import { useRouter } from "next/navigation";
 import { message } from "antd";
 
+import { HandleLogin } from "@/Service/API/auth/auth";
+import googleLogo from "@/asset/image/login.image/googleLogo.png";
+import icon_login from "@/asset/image/login.image/img.Logo.png";
+import discordLogo from "@/asset/image/login.image/discordLogo.png";
+import Button from "@/components/Button";
+import { getCookie } from "@/utils";
+
 const FormLogin = () => {
+  const router = useRouter();
   const [formDatas, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -28,36 +31,33 @@ const FormLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formDatas.password < 1) {
-      message.info("password do not match")
-      return; 
-    }
-
     try {
-
       const response = await HandleLogin(formDatas);
-
-
-
-
-      message.success("Registrasi berhasil")
       
-    } catch (error) {
-      message.error("Terjadi kesalahan pada server")
-      
-    }
-
     
-   
+
+      // Jika cookie jwt ditemukan, cetak nilainya ke konsol
+     
+      router.push("/dashboard");
+      message.success(response.message);
+    } catch (error) {
+      message.error(error.response.data.message);
+    }
   };
-  
+
+  useEffect(() => {
+    const jwt = getCookie("jwt");
+    console.log(jwt)
+
+    if (jwt) router.push("/dashboard");
+  }, []);
 
   return (
     <>
       <div className="mb-4 mt-6 flex justify-center">
         <Image src={icon_login} className="h-[157px] w-[239px]" />
       </div>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         {/* Email */}
         <div className="mb-4">
           <label
@@ -89,10 +89,10 @@ const FormLogin = () => {
           <input
             type="password"
             id="password"
+            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             name="password"
             onChange={handleChange}
             value={formDatas.password}
-            className="w-full rounded-md border px-3 py-2 text-sm text-gray-500 focus:outline-oren"
             placeholder="•••••••••"
             required
           />

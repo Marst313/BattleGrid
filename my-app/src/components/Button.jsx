@@ -11,6 +11,7 @@ const Button = ({ text, className, src, alt  , submit}) => {
       {src && <Image src={src} alt={alt} width={30} height={30} />}
 
       {text}
+    
     </button>
   );
 };

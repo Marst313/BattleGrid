@@ -9,16 +9,19 @@ import Image from "next/image";
 import CheckedRole from "./CheckedRole";
 import { message } from "antd";
 import { HandleRegister } from "@/Service/API/auth/auth";
+import { getCookie } from "@/utils";
+import { useRouter } from "next/navigation";
 const FormRegister = () => {
+  const router = useRouter();
   const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
   const [isActiveCreator, setIsActiveCreator] = useState(false);
   const [selectedRole, setSelectedRole] = useState("USER");
   const [formDatas, setFormData] = useState({
-    name:"genta",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: selectedRole, 
+    role: selectedRole,
   });
 
   const setSelectedRoleAndFormData = (role) => {
@@ -31,27 +34,13 @@ const FormRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formDatas.password !== formDatas.confirmPassword) {
-      message.info("password do not match")
-      return; 
-    }
-
     try {
-
       const response = await HandleRegister(formDatas);
 
-
-
-
-      message.success("Registrasi berhasil")
-      
+      message.success("Registrasi berhasil");
     } catch (error) {
-      message.error("Terjadi kesalahan pada server")
-      
+      message.error(error.response.data.message);
     }
-
-    
-   
   };
 
   const handleChange = (e) => {
@@ -61,6 +50,12 @@ const FormRegister = () => {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    const jwt = getCookie("jwt");
+
+    if (jwt) router.push("/dashboard");
+  }, []);
 
   return (
     <>
@@ -74,14 +69,13 @@ const FormRegister = () => {
           selectedRole={selectedRole}
         />
       </div>
-      <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
+
       <hr className="mx-auto my-4 h-[1px] w-full rounded border-0 bg-abu md:my-10 " />
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             htmlFor="email"
             className="mb-1 block text-sm font-normal text-gray-300"
-        
           >
             Email
           </label>
@@ -100,7 +94,6 @@ const FormRegister = () => {
           <label
             htmlFor="password"
             className="mb-1 block text-sm font-normal text-gray-300"
-       
           >
             Password
           </label>
@@ -120,7 +113,6 @@ const FormRegister = () => {
           <label
             htmlFor="confirmPassword"
             className="mb-1 block text-sm font-normal text-gray-300"
-     
           >
             Confirm Password
           </label>
@@ -138,7 +130,6 @@ const FormRegister = () => {
 
         <button
           type="submit"
-
           className="w-full rounded-md bg-oren px-4 py-3 text-sm font-bold text-white"
         >
           Create account

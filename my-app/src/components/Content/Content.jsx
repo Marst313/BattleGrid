@@ -9,7 +9,6 @@ import bracket from "@/asset/image/Onboarding.image/Bracket.png";
 import Section from "./Section/Section";
 
 const Content = () => {
-
   return (
     <div className="relative h-dvh">
       <div className="absolute inset-0 z-10  ">
@@ -18,13 +17,12 @@ const Content = () => {
           <Image src={bracket} className=" w-auto pr-4"></Image>
         </div>
         <Section />
-       
       </div>
 
       <Image
         src={bg}
         alt="Background Image"
-        className="object-cover w-full h-fit"
+        className="h-fit w-full object-cover"
       />
 
       <Footer />
