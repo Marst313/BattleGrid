@@ -1,10 +1,11 @@
 import React from "react";
+import Dashboard from "./components/Dashboard";
 
 const page = () => {
   return (
-    <div>
-      <h1>Hello from the dashboard</h1>
-    </div>
+    <section className="flex w-full">
+      <Dashboard />
+    </section>
   );
 };
 

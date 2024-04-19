@@ -6,7 +6,7 @@ import logo from "@/asset/image/register.image/img.Logo.png";
 
 const BannerRegister = () => {
   return (
-    <div className="w-1/2 h-screen bg-gradient-to-b from-oren2 to-oren rounded-2xl p-10 relative">
+    <div className="relative hidden h-[50rem] w-[30rem] rounded-2xl bg-gradient-to-b from-oren2 to-oren p-10 xl:block">
       <h3>Battle Grid</h3>
 
       <h2 className="mt-20 max-w-xs leading-relaxed">
@@ -21,7 +21,7 @@ const BannerRegister = () => {
       <Image
         src={logo}
         alt="subtract"
-        className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 transform"
         height={450}
         width={450}
       />

@@ -42,7 +42,7 @@ const ListTurnamen = () => {
     <div className="">
       <div className="flex  items-center justify-evenly gap-4 px-48 py-12">
         <div className="">
-          <p className="text-2xl font-semibold py-2">
+          <p className="py-2 text-2xl font-semibold">
             Find Your Tournament Search, Complete, Win !
           </p>
           <p className="w-[70%] text-sm text-gray-400">
@@ -53,7 +53,7 @@ const ListTurnamen = () => {
           </p>
         </div>
         <div className="flex items-center justify-center">
-          <div className=" bg-oren w-60 px-4 text-center gap-3 shadow-2xl flex items-center  py-1 justify-center rounded-md font-semibold ">
+          <div className=" flex w-60 items-center justify-center gap-3 rounded-md bg-oren px-4  py-1 text-center font-semibold shadow-2xl ">
             <button>More Tournaments</button>
             <FontAwesomeIcon icon={faChevronRight} />
           </div>
@@ -68,24 +68,26 @@ const ListTurnamen = () => {
           ))}
         </div>
       </div>
+
       <div className="flex justify-center py-4">
-        <div className="flex justify-center py-12 border-t w-fit ">
-          <Image src={list} />
+        <div className="flex w-fit justify-center border-t py-12 ">
+          <Image src={list} alt="image game" />
         </div>
       </div>
 
-      <div className="flex justify-center py-32 relative">
-        <Image src={card} />
+      <div className="relative flex justify-center py-32">
+        <Image src={card} alt="image game" />
         <div className="absolute flex flex-col items-center justify-center gap-8  py-9">
           <p className="text-center text-xl">
-            Join the Action, <span className="text-oren font-bold">Sign Up </span> Now !{" "}
+            Join the Action,{" "}
+            <span className="font-bold text-oren">Sign Up </span> Now !{" "}
           </p>
-          <p className="text-gray-400 text-base w-[40%] text-center">
+          <p className="w-[40%] text-center text-base text-gray-400">
             By signing up now, you gain exclusive access to thrilling
             tournaments, pulse-pounding matches, and the chance to prove your
             skills against the best in the gaming community.
           </p>
-          <button className="bg-oren text-white px-4 py-1 rounded-md font-semibold w-40">
+          <button className="w-40 rounded-md bg-oren px-4 py-1 font-semibold text-white">
             Sign Up Now !
           </button>
         </div>

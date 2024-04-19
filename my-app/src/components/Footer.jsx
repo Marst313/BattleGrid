@@ -14,10 +14,10 @@ import {
 const Footer = () => {
   return (
     <div className="">
-      <footer className="  w-full bg-abu1 text-white py-2 border-t">
+      <footer className="  w-full border-t bg-abu1 py-2 text-white">
         <div className="">
           <div className="flex justify-evenly py-12 ">
-            <Image src={icon} className="w-32 h-full" />
+            <Image src={icon} alt="battlegrid logo" className="h-full w-32" />
 
             <div className="flex flex-col gap-4">
               <div className="mb-3">
@@ -73,7 +73,7 @@ const Footer = () => {
               <p className="text-sm text-gray-400">Contact Us</p>
             </div>
           </div>
-          <div className="text-center mt-8 mb-4 text-sm">
+          <div className="mb-4 mt-8 text-center text-sm">
             <p>© 2024 Battle Grid. All rights reserved</p>
           </div>
         </div>
