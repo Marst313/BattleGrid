@@ -11,7 +11,7 @@ import Section from "./Section/Section";
 const Content = () => {
   return (
     <div className="relative mt-20 h-dvh">
-      <div className="absolute inset-0 z-10  ">
+      <div className="absolute inset-0 ">
         <div className="flex justify-center py-12">
           <OnBoarding />
           <Image

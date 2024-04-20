@@ -7,7 +7,7 @@ import Carousel from "./Boarding/Caraousel";
 const OnBoarding = () => {
   return (
     <div className="relative max-w-[800px] px-8 py-8 ">
-      <div className="relative rounded-lg overflow-hidden">
+      <div className="relative overflow-hidden rounded-lg">
         <div className="absolute inset-0 z-0">
           <Image
             src={Background}

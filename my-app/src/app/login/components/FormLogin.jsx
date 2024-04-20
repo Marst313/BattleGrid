@@ -34,7 +34,7 @@ const FormLogin = () => {
     try {
       const response = await HandleLogin(formDatas);
 
-      router.push("/");
+      router.push("/dashboard");
       message.success(response.message);
     } catch (error) {
       message.error(error.response.data.message);

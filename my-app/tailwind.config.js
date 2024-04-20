@@ -22,6 +22,7 @@ module.exports = {
         oren2: "#FF4C29",
         abu: "#5F6369",
         abu1: "#222831",
+        abu2: "#393E46",
         hitam: "#5A5773",
         discord: "#7289DA",
         white: "#EEEEEE",
