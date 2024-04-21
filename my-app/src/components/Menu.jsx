@@ -9,9 +9,8 @@ const Menu = () => {
   const path = usePathname();
 
   return (
-    <div>
-      {" "}
-      <div className="flex items-center gap-10">
+    <ul className="relative mt-20 flex flex-col items-center gap-10 md:mt-0 md:flex-row">
+      <li>
         <Link href={"/"}>
           <p
             className={`${
@@ -23,9 +22,13 @@ const Menu = () => {
             Home
           </p>
         </Link>
+      </li>
 
+      <li>
         <DropdownCompetition />
+      </li>
 
+      <li>
         <Link href={"/guide"}>
           <p
             className={`${
@@ -37,7 +40,9 @@ const Menu = () => {
             Guide
           </p>
         </Link>
+      </li>
 
+      <li>
         <Link href={"/about"}>
           <p
             className={`${
@@ -49,8 +54,8 @@ const Menu = () => {
             About
           </p>
         </Link>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 };
 

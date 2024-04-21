@@ -1,75 +1,68 @@
 import React from "react";
-import { Dropdown, Space } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-const items = [
-  {
-    key: "1",
-    label: <Link href="/tourney">Create Your Own</Link>,
-  },
-  {
-    key: "2",
-    label: <Link href="/tourney">Upcoming competition</Link>,
-  },
+import { cn } from "@/lib/utils";
 
-  {
-    key: "2",
-    label: <Link href="/tourney">Popuar competition</Link>,
-  },
-];
 const DropdownCompetition = () => {
   const path = usePathname();
+
   return (
-    <NavigationMenu
-      className={`${
-        path === "/competitions"
-          ? "w-fit border-b-2 border-oren text-center font-semibold"
-          : "font-light text-gray-300"
-      } z-50`}
-    >
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            className={`${
-              path === "/competitions"
-                ? "w-fit border-b-2 border-oren text-center font-semibold"
+            className={`bg-transparent text-base font-bold hover:bg-transparent hover:text-white focus:bg-transparent ${
+              path === "/tourney"
+                ? "w-fit rounded-none border-b-2 border-oren text-center font-semibold"
                 : "font-light text-gray-300"
-            } bg-transparent bg-none hover:bg-abu hover:text-white`}
+            }`}
           >
-            <Link href="/competition">Competitions</Link>
+            Competition
           </NavigationMenuTrigger>
-
-          <NavigationMenuContent className="bg-red-500">
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+          <NavigationMenuContent>
+            <ul className="grid  gap-3  p-6 backdrop-blur-md md:w-[400px] lg:w-[600px]  lg:grid-cols-2">
+              <li className="row-span-3 ">
+                <NavigationMenuLink asChild className="hover:bg-abu2">
+                  <Link
+                    className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-abu1  p-6 no-underline outline-none  focus:shadow-md"
+                    href="/tourney/geneartor"
                   >
-                    <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                    <div className="mb-2 mt-4 text-lg font-medium text-white">
+                      Create Your Own
                     </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                    <p className="text-muted-foreground mt-5  line-clamp-2 text-sm font-light leading-snug md:line-clamp-none">
+                      Tailor competitions, personalize challenges, and foster
+                      community engagement effortlessly.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
+              <ListItem
+                href="/tourney/search"
+                title="Upcoming Competition"
+                className="bg-abu2 hover:bg-abu1"
+              >
+                Stay tuned for exciting matches, epic battles, and a chance to
+                prove your skills on the virtual battlefield.
+              </ListItem>
+              <ListItem
+                href="/tourney/search"
+                title="Popular Competition"
+                className="h-full bg-abu2 hover:bg-abu1"
+              >
+                Join the worldwide and experience of competing in the most
+                popular gaming events around!
+              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -77,4 +70,30 @@ const DropdownCompetition = () => {
     </NavigationMenu>
   );
 };
+
+const ListItem = React.forwardRef(
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors",
+              className,
+            )}
+            {...props}
+          >
+            <div className="text-base font-bold leading-none">{title}</div>
+            <p className="text-muted-foreground mt-5  line-clamp-3 text-sm font-light leading-snug md:line-clamp-none">
+              {children}
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  },
+);
+ListItem.displayName = "ListItem";
+
 export default DropdownCompetition;

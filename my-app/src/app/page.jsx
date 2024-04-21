@@ -6,13 +6,13 @@ import ScrollOnTop from "@/components/ScrollOnTop";
 
 const page = () => {
   return (
-    <div>
+    <main>
       <Navbar />
 
       <Content />
 
       <ScrollOnTop />
-    </div>
+    </main>
   );
 };
 
