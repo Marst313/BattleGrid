@@ -16,8 +16,6 @@ import { cn } from "@/lib/utils";
 const DropdownCompetition = () => {
   const path = usePathname();
 
-  console.log(path.startsWith("/tourney"));
-
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -42,7 +40,7 @@ const DropdownCompetition = () => {
                     <div className="mb-2 mt-4 text-lg font-medium text-white">
                       Create Your Own
                     </div>
-                    <p className="text-muted-foreground mt-5  text-sm font-light leading-snug">
+                    <p className="text-muted-foreground mt-5  line-clamp-2 text-sm font-light leading-snug md:line-clamp-none">
                       Tailor competitions, personalize challenges, and foster
                       community engagement effortlessly.
                     </p>
@@ -60,7 +58,7 @@ const DropdownCompetition = () => {
               <ListItem
                 href="/tourney/search"
                 title="Popular Competition"
-                className="bg-abu2 h-full hover:bg-abu1"
+                className="h-full bg-abu2 hover:bg-abu1"
               >
                 Join the worldwide and experience of competing in the most
                 popular gaming events around!
@@ -87,7 +85,7 @@ const ListItem = React.forwardRef(
             {...props}
           >
             <div className="text-base font-bold leading-none">{title}</div>
-            <p className="text-muted-foreground mt-5  text-sm font-light leading-snug">
+            <p className="text-muted-foreground mt-5  line-clamp-3 text-sm font-light leading-snug md:line-clamp-none">
               {children}
             </p>
           </a>
