@@ -128,3 +128,32 @@ input[type="radio"]:checked:after {
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }
+
+/* Card */
+
+.card_box .span_element::before {
+  content: "Create competition";
+  position: absolute;
+  width: 150%;
+  height: 40px;
+  background-image: linear-gradient(45deg, white 0%, white 51%, white 100%);
+  transform: rotate(-45deg) translateY(-20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff4c29;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
+  font-weight: bold;
+}
+
+.card_box .span_element::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  z-index: -1;
+  box-shadow: 140px -140px white;
+  background-image: linear-gradient(45deg, white 0%, white 51%, white 100%);
+}

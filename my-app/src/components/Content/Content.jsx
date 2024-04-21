@@ -3,23 +3,22 @@ import React from "react";
 import Footer from "../Footer";
 import Image from "next/image";
 import bg from "@/asset/image/Main.image/Background.png";
-import OnBoarding from "./OnBoarding";
-import bracket from "@/asset/image/Onboarding.image/Bracket.png";
+import bracket from "@/asset/image/Onboarding.image/bracket.png";
 
 import Section from "./Section/Section";
+import CardBracket from "./CardBracket";
+import { CarouselMain } from "./CarouselMain";
 
 const Content = () => {
   return (
-    <div className="relative mt-20 h-dvh">
-      <div className="absolute inset-0 ">
-        <div className="flex justify-center py-12">
-          <OnBoarding />
-          <Image
-            alt="human with gun"
-            src={bracket}
-            className=" w-auto pr-4"
-          ></Image>
+    <div>
+      <div className="absolute inset-0">
+        <div className="mx-auto mt-20 flex max-w-screen-xl flex-col justify-between gap-5 py-12 lg:flex-row">
+          <CarouselMain />
+
+          <CardBracket />
         </div>
+
         <Section />
       </div>
 
