@@ -11,7 +11,7 @@ import googleLogo from "@/asset/image/login.image/googleLogo.png";
 import icon_login from "@/asset/image/login.image/img.Logo.png";
 import discordLogo from "@/asset/image/login.image/discordLogo.png";
 import Button from "@/components/Button";
-import { getCookie } from "@/utils";
+import {  getCookies } from "@/utils";
 
 const FormLogin = () => {
   const router = useRouter();
@@ -46,10 +46,14 @@ const FormLogin = () => {
   };
 
   useEffect(() => {
-    const jwt = getCookie("jwt");
+    const jwt = getCookies("jwt");
     console.log(jwt)
 
-    if (jwt) router.push("/dashboard");
+    if (jwt) {
+      router.push("/dashboard")
+    } else {
+      alert("tidak ada cookie")
+    };
   }, []);
 
   return (
