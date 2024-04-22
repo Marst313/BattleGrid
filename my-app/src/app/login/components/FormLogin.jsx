@@ -12,7 +12,7 @@ import icon_login from "@/asset/image/login.image/img.Logo.png";
 import discordLogo from "@/asset/image/login.image/discordLogo.png";
 import Button from "@/components/Button";
 import { getCookies } from "@/utils";
-import { useCookies } from "react-cookie";
+
 
 const FormLogin = () => {
   const router = useRouter();
@@ -20,8 +20,7 @@ const FormLogin = () => {
     email: "",
     password: "",
   });
-  const [cookies,setCookie] = useCookies(["user"]);
-  console.log(cookies)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -31,8 +30,7 @@ const FormLogin = () => {
   };
  
 
-  let expires = new Date(Date.now() + 24 * 60 * 60 * 1000)
-
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +39,7 @@ const FormLogin = () => {
       const response = await HandleLogin(formDatas);
 
       // Jika cookie jwt ditemukan, cetak nilainya ke konsol
-      setCookie("user", response.token, { path: "/" ,httpOnly:false,expires});
-   
+    
 
       router.push("/dashboard");
       message.success(response.message);
@@ -52,12 +49,12 @@ const FormLogin = () => {
   };
 
   useEffect(() => {
- const jwt = getCookies('user')
+ const jwt = getCookies('jwt')
  console.log(jwt)
    
 
-    if (!cookies.user) {
-      alert("tidak ada cookie");
+    if (!jwt) {
+      message.info("tidak ada cookie");
     } else {
 
       router.push("/dashboard");
@@ -98,7 +95,7 @@ const FormLogin = () => {
         <div className="mb-6">
           <label
             htmlFor="password"
-            className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            className="mb-2 block text-sm font-medium text-gray-300  dark:text-white"
           >
             Password
           </label>

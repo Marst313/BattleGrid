@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 
 
 const page = () => {
-  const jwt = getCookies("user")
+  const jwt = getCookies("seru")
   const [cookies] = useCookies()
   console.log(cookies)
   console.log(jwt)

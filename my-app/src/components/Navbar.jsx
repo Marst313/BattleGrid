@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="absolute top-0 w-full bg-abu1 p-2" ref={navbarRef}>
+    <nav className="absolute top-0 z-10 w-full bg-abu1 p-2" ref={navbarRef}>
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between ">
         {/* Logo BattleGrid */}
         <Link
