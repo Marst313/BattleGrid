@@ -14,9 +14,9 @@ const Tab = () => {
   };
 
   return (
-    <div className="">
+    <div className="mx-auto w-full flex justify-center">
       <div className="absolute inset-0">
-        <div className="mx-auto mb-4 mt-20 flex items-center justify-center  py-20 gap-6">
+        <div className="mx-auto mb-4 mt-20 flex items-center justify-center  py-20 gap-6 w-full">
           <div
             className={`mr-2  px-4 py-2 ${activeTab === "Player" ? " border-b-4 text-oren border-b-oren" : ""} cursor-pointer text-xl font-semibold `}
             onClick={() => handleTabClick("Player")}
@@ -31,7 +31,7 @@ const Tab = () => {
           </div>
         </div>
 
-        <div className=" mx-auto items-center py-24 ">
+        <div className="items-center py-24  ">
           {activeTab === "Player" && (
             <div className="px-56">
               <PlayerTabContent />

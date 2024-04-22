@@ -12,10 +12,10 @@ const PlayerTabContent = () => {
   return (
     <div>
       {" "}
-      <div className="relative ">
-        <span className="inset-0 z-auto rounded-full bg-oren px-12 py-3 text-center text-white ">
+      <div className="relative  ">
+        <div className="absolute -top-2 left-[10px]  w-52 rounded-full bg-oren px-12  py-3 text-center text-white ">
           Find Tour
-        </span>
+        </div>
         <Image src={line1} className=" absolute  left-[144px] top-3 -z-10" />
         <Image src={line2} className=" absolute  left-[400px] top-3 -z-10" />
         <Image src={line3} className=" absolute  left-[990px] top-3 -z-10" />
@@ -31,7 +31,7 @@ const PlayerTabContent = () => {
           src={line5}
           className=" absolute  left-[10px] top-[360px]  -z-10"
         />
-        
+
         <Image src={pink} className="absolute  -top-1 left-[370px] -z-10" />
         <Image src={blue} className="absolute  left-[980px] top-[345px] " />
         <Image src={blue2} className="absolute  left-[580px] top-[345px] " />
@@ -48,25 +48,25 @@ const PlayerTabContent = () => {
           Winning The Competition
         </div>
 
-        <p className="absolute  left-[995px] top-[320px] -z-10 text-sm text-gray-300">
+        <p className="absolute  left-[1010px] top-[320px] -z-10 text-sm text-gray-300">
           Join
         </p>
-        <p className="absolute  left-[990px]  top-[390px] -z-10 text-sm text-gray-300">
+        <p className="absolute  left-[1005px]  top-[390px] -z-10 text-sm text-gray-300">
           Tourney
         </p>
 
         <p className="absolute  left-[595px] top-[320px] -z-10 text-sm text-gray-300">
           Pay Attention
         </p>
-        <p className="absolute  left-[595px]  top-[390px] -z-10 text-sm text-gray-300">
+        <p className="absolute  left-[575px]  top-[390px] -z-10 text-sm text-gray-300">
           To the schedule
         </p>
 
         <div className="relative">
-          <p className="absolute  -top-14 left-[400px] -z-10 text-sm text-gray-300">
+          <p className="absolute  -top-8 left-[400px] -z-10 text-sm text-gray-300">
             Login /
           </p>
-          <p className="absolute  -bottom-8 left-[390px] -z-10 text-sm text-gray-300">
+          <p className="absolute  -bottom-14 left-[390px] -z-10 text-sm text-gray-300">
             Register
           </p>
         </div>
