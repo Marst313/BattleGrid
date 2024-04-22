@@ -8,9 +8,10 @@ import icon_google from "@/asset/image/login.image/googleLogo.png";
 import CheckedRole from "./CheckedRole";
 import { message } from "antd";
 import { HandleRegister } from "@/Service/API/auth/auth";
-import { getCookie } from "@/utils";
+import { getCookie, getCookies } from "@/utils";
 import { useRouter } from "next/navigation";
 import Button from "@/components/Button";
+import { useCookies } from "react-cookie";
 const FormRegister = () => {
   const router = useRouter();
   const [isActivePlayer, setIsActivePlayer] = useState(true); // Mengatur default ke Player
@@ -23,6 +24,8 @@ const FormRegister = () => {
     confirmPassword: "",
     role: selectedRole,
   });
+  const [jwt] = useCookies()
+  console.log(jwt)
 
   const setSelectedRoleAndFormData = (role) => {
     setSelectedRole(role);
@@ -61,7 +64,7 @@ const FormRegister = () => {
   };
 
   useEffect(() => {
-    const jwt = getCookie("jwt");
+   
 
     if (jwt) router.push("/dashboard");
   }, []);

@@ -7,8 +7,11 @@ import OnBoarding from "./OnBoarding";
 import bracket from "@/asset/image/Onboarding.image/Bracket.png";
 
 import Section from "./Section/Section";
+import { useCookies } from "react-cookie";
 
 const Content = () => {
+  const [cookies] = useCookies(['user'])
+  console.log(cookies)
   return (
     <div className="relative mt-20 h-dvh">
       <div className="absolute inset-0 ">

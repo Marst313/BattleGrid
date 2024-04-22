@@ -2,7 +2,7 @@ import axiosInstance from "@/Service/Config/Instance";
 
 export const HandleLogin = async (data) => {
   try {
-    const response = await axiosInstance.post("/login", data, );
+    const response = await axiosInstance.post("/login", data);
     document.cookie = `jwt=${response.data.token}; expires=${new Date(Date.now() + 24 * 60 * 60 * 1000).toUTCString()}; path=/`;
     return response.data;
   } catch (error) {

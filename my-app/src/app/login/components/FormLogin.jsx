@@ -11,7 +11,8 @@ import googleLogo from "@/asset/image/login.image/googleLogo.png";
 import icon_login from "@/asset/image/login.image/img.Logo.png";
 import discordLogo from "@/asset/image/login.image/discordLogo.png";
 import Button from "@/components/Button";
-import {  getCookies } from "@/utils";
+import { getCookies } from "@/utils";
+import { useCookies } from "react-cookie";
 
 const FormLogin = () => {
   const router = useRouter();
@@ -19,7 +20,8 @@ const FormLogin = () => {
     email: "",
     password: "",
   });
-
+  const [cookies,setCookie] = useCookies(["user"]);
+  console.log(cookies)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -27,33 +29,39 @@ const FormLogin = () => {
       [name]: value,
     }));
   };
+ 
+
+  let expires = new Date(Date.now() + 24 * 60 * 60 * 1000)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await HandleLogin(formDatas);
-      
-    
 
       // Jika cookie jwt ditemukan, cetak nilainya ke konsol
-     
+      setCookie("user", response.token, { path: "/" ,httpOnly:false,expires});
+   
+
       router.push("/dashboard");
       message.success(response.message);
     } catch (error) {
-      message.error(error.response.data.message);
+      message.error(error.response?.data.message);
     }
   };
 
   useEffect(() => {
-    const jwt = getCookies("jwt");
-    console.log(jwt)
+ const jwt = getCookies('user')
+ console.log(jwt)
+   
 
-    if (jwt) {
-      router.push("/dashboard")
+    if (!cookies.user) {
+      alert("tidak ada cookie");
     } else {
-      alert("tidak ada cookie")
-    };
+
+      router.push("/dashboard");
+    }
   }, []);
 
   return (

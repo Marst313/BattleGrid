@@ -2,14 +2,15 @@
 import React from "react";
 import Dashboard from "./components/Dashboard";
 import { getCookies } from "@/utils";
+import { useCookies } from "react-cookie";
 
 
 const page = () => {
-  const jwt = getCookies("jwt")
+  const jwt = getCookies("user")
+  const [cookies] = useCookies()
+  console.log(cookies)
   console.log(jwt)
-  var allcookies = document.cookie;
-  var arrayb = allcookies.split(";");
-  console.log(allcookies)
+ 
   return (
     <section className="flex w-full">
 
