@@ -15,8 +15,8 @@ const Guide = () => {
       <Navbar />
       <div className="hidden md:hidden lg:block">
         <Tab />
-        <Footer />
       </div>
+      
     </main>
   );
 };

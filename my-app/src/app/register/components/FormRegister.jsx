@@ -46,7 +46,7 @@ const FormRegister = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        role: "USER",
+        role: "",
       });
 
       router.push("/dashboard");

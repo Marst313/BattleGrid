@@ -12,9 +12,11 @@ import icon_login from "@/asset/image/login.image/img.Logo.png";
 import discordLogo from "@/asset/image/login.image/discordLogo.png";
 import Button from "@/components/Button";
 import { getCookies } from "@/utils";
-
+import { useDispatch } from "react-redux";
+import { setProfile } from "@/Redux/features/users/userSlice";
 
 const FormLogin = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [formDatas, setFormData] = useState({
     email: "",
@@ -28,9 +30,6 @@ const FormLogin = () => {
       [name]: value,
     }));
   };
- 
-
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,8 +37,9 @@ const FormLogin = () => {
     try {
       const response = await HandleLogin(formDatas);
 
-      // Jika cookie jwt ditemukan, cetak nilainya ke konsol
-    
+      const { role, email, name } = response.data.user;
+
+      dispatch(setProfile({ role, email, name }));
 
       router.push("/dashboard");
       message.success(response.message);
@@ -49,14 +49,9 @@ const FormLogin = () => {
   };
 
   useEffect(() => {
- const jwt = getCookies('jwt')
- console.log(jwt)
-   
+    const jwt = getCookies("jwt");
 
-    if (!jwt) {
-      message.info("tidak ada cookie");
-    } else {
-
+    if (jwt) {
       router.push("/dashboard");
     }
   }, []);
