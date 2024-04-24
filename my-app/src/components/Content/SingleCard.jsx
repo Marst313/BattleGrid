@@ -18,7 +18,6 @@ const SingleCard = ({ title, description, button, image, alt }) => {
               src={Background}
               alt={alt}
               layout="fill"
-              objectFit="cover"
               className="rounded-lg"
             />
             <div className="absolute h-full w-full rounded-lg bg-black bg-opacity-50 backdrop-blur-md"></div>

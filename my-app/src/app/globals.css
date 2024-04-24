@@ -37,6 +37,11 @@ h3 {
   @apply text-2xl;
 }
 
+.bg {
+  background: no-repeat url("../asset/image/Main.image/Background.png");
+  background-size: cover;
+}
+
 input[type="radio"]:after {
   width: 15px;
   height: 15px;
@@ -156,4 +161,8 @@ input[type="radio"]:checked:after {
   z-index: -1;
   box-shadow: 140px -140px white;
   background-image: linear-gradient(45deg, white 0%, white 51%, white 100%);
+}
+
+.trapezium {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
 }

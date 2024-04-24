@@ -1,21 +1,15 @@
-"use client";
-
 import {
   CaraouselIndicator,
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
 import { carouselItem } from "@/utils/constants";
 import SingleCard from "./SingleCard";
-import { useState } from "react";
 
 export function CarouselMain() {
-  const [current, setCurrent] = useState(0);
-
   return (
     <Carousel className="w-full p-2 ">
       <CarouselContent className="">

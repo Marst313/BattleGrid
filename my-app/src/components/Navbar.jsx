@@ -68,7 +68,7 @@ const Navbar = () => {
 
         {/* Mobile View */}
         <div
-          className={`${openNav ? "opacity-100" : "opacity-0"} absolute right-5 top-0 z-10 mt-16 h-96 w-96 rounded-lg border-2 border-abu2 bg-abu shadow-xl transition-all md:hidden`}
+          className={`${openNav ? "block opacity-100" : "hidden opacity-0"} absolute right-5 top-0 z-10 mt-16 h-96 w-96 rounded-lg border-2 border-abu2 bg-abu shadow-xl transition-all md:hidden`}
         >
           <Menu />
         </div>
