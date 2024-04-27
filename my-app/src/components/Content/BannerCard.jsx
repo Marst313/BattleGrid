@@ -4,7 +4,7 @@ import Button from "../Button";
 
 const BannerCard = () => {
   return (
-    <div className="mx-auto mt-20 max-w-screen-xl p-5 xl:p-0">
+    <div className="mx-auto my-20 max-w-screen-xl p-5 xl:p-0">
       <div className="relative h-[30rem] ">
         {/* Trapezium */}
         <div className="trapezium absolute flex h-full w-full flex-col items-center justify-center gap-5 rounded-sm bg-white/10 p-5 backdrop-blur-sm lg:p-10">

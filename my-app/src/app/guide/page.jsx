@@ -1,8 +1,7 @@
 import Navbar from "@/components/Navbar";
 import React from "react";
-import Tab from "./components/Tab";
 import Footer from "@/components/Footer";
-
+import Tab from "@/components/guide/Tab";
 
 export const metadata = {
   title: "Battle Grid - Guide",
@@ -16,7 +15,6 @@ const Guide = () => {
       <div className="hidden md:hidden lg:block">
         <Tab />
       </div>
-      
     </main>
   );
 };

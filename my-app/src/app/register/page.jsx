@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 
-import BannerRegister from "./components/BannerRegister";
-import FormRegister from "./components/FormRegister";
+import BannerRegister from "../../components/register/BannerRegister";
+import FormRegister from "../../components/register/FormRegister";
 
 const page = () => {
   return (

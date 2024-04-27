@@ -12,7 +12,7 @@ import SingleCard from "./SingleCard";
 export function CarouselMain() {
   return (
     <Carousel className="w-full p-2 ">
-      <CarouselContent className="">
+      <CarouselContent>
         {carouselItem.map((item, index) => (
           <SingleCard key={item.id} {...item} />
         ))}

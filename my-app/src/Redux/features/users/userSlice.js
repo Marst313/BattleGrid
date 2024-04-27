@@ -4,6 +4,11 @@ const initialState = {
   role: "",
   email: "",
   name: "",
+  filter: {
+    sortby: "",
+    game: "",
+    status: "",
+  },
 };
 
 const userSlice = createSlice({
@@ -16,11 +21,16 @@ const userSlice = createSlice({
       state.email = payload.email;
       state.name = payload.name;
     },
+    setFilter: (state, { payload }) => {
+      console.log(payload);
+
+      state.filter = payload;
+    },
   },
 
   extraReducers: () => {},
 });
 
-export const { setProfile } = userSlice.actions;
+export const { setProfile, setFilter } = userSlice.actions;
 
 export default userSlice.reducer;

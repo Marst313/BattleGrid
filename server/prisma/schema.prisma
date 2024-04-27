@@ -44,7 +44,7 @@ model FormatTour {
   type                Type    @default(SINGLE_ELIMINATION)
   include_3rdPlace    Boolean @default(false)
   currentParticipants Int     @default(0)
-  maxParicipants      Int
+  maxParticipants     Int     @default(8)
   tourney             Tourney @relation(fields: [tourneyId], references: [id], onDelete: Cascade)
   tourneyId           String  @unique
   game                Game    @default(dota_2)

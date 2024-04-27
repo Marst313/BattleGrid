@@ -16,6 +16,12 @@ import overwatch_logo from "@/asset/image/Section.image/overwatchLogo.png";
 import fortnite_logo from "@/asset/image/Section.image/fortniteLogo.png";
 import rocketleague_logo from "@/asset/image/Section.image/rocketLogo.png";
 
+// Bracket
+import single_bracket from "@/asset/image/Tourney.generator/singleElimination.png";
+import double_bracket from "@/asset/image/Tourney.generator/doubleElimination.png";
+import robin_bracket from "@/asset/image/Tourney.generator/roundRobin.png";
+import swiss_bracket from "@/asset/image/Tourney.generator/swiss.png";
+
 export const carouselItem = [
   {
     id: 1,
@@ -109,5 +115,107 @@ export const listLogoGame = [
     id: 7,
     name: "Overwatch",
     image: overwatch_logo,
+  },
+];
+
+export const listBracket = [
+  {
+    id: 0,
+    title: "Single Elimination",
+    image: single_bracket,
+    description:
+      "Participants compete in a series of matches, the winner of each match advancing to the next round and the loser being eliminated from the competition.",
+  },
+  {
+    id: 1,
+    title: "Double Elimination",
+    image: double_bracket,
+    description:
+      "After losing a match in the upper bracket, participants move to the lower bracket, where they continue to compete against other participants who have also been defeated.",
+  },
+  {
+    id: 2,
+    title: "Round Robin",
+    image: robin_bracket,
+    description:
+      "After all matches are completed, rankings are determined based on win-loss records, points earned, or other predetermined criteria.",
+  },
+  {
+    id: 3,
+    title: "Swiss",
+    image: swiss_bracket,
+    description:
+      "A tournament format where players or teams compete in a series of rounds without being eliminated. Unlike single or double elimination tournaments.",
+  },
+];
+
+export const filterSort = [
+  {
+    value: "sort by",
+    label: "Sort By",
+  },
+  {
+    value: "participants lowest",
+    label: "Participants lowest",
+  },
+  {
+    value: "participants higest",
+    label: "Participants higest",
+  },
+
+  {
+    value: "playing oldest",
+    label: "Playing oldest",
+  },
+  {
+    value: "playing newest",
+    label: "Playing newest",
+  },
+];
+
+export const gameSort = [
+  {
+    value: "game",
+    label: "Game",
+  },
+  {
+    value: "apex legends",
+    label: "Apex Legends",
+  },
+  {
+    value: "dota 2",
+    label: "Dota 2",
+  },
+  {
+    value: "cs:go",
+    label: "CS:GO",
+  },
+
+  {
+    value: "valorant",
+    label: "Valorant",
+  },
+  {
+    value: "overwatch",
+    label: "Overwatch",
+  },
+];
+
+export const statusSort = [
+  {
+    value: "status",
+    label: "Status",
+  },
+  {
+    value: "ongoing",
+    label: "Ongoing",
+  },
+  {
+    value: "complated",
+    label: "Complated",
+  },
+  {
+    value: "pending",
+    label: "Pending",
   },
 ];

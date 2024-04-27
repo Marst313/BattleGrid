@@ -63,6 +63,8 @@ exports.getAllCompetition = catchAsync(async (req, res, next) => {
     },
   });
 
+  if (!allCompetition) return next(new AppError('There is no tournaments yet!', 400));
+
   res.status(200).json({
     status: 'success',
     message: 'All competition',

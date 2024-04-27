@@ -37,6 +37,10 @@ h3 {
   @apply text-2xl;
 }
 
+select {
+  border-right: 16px solid transparent;
+}
+
 .bg {
   background: no-repeat url("../asset/image/Main.image/Background.png");
   background-size: cover;

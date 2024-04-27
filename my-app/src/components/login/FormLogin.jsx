@@ -22,7 +22,7 @@ const FormLogin = () => {
     email: "",
     password: "",
   });
-  const [loading , setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +34,7 @@ const FormLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
 
     try {
       const response = await HandleLogin(formDatas);
@@ -47,8 +47,8 @@ const FormLogin = () => {
       message.success(response.message);
     } catch (error) {
       message.error(error.response?.data.message);
-    } finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,7 +118,12 @@ const FormLogin = () => {
           </Link>
         </div>
 
-        <Button text="Login" className="w-full bg-oren" submit={handleSubmit} loading={loading} />
+        <Button
+          text="Login"
+          className="w-full bg-oren"
+          submit={handleSubmit}
+          loading={loading}
+        />
       </form>
 
       {/* Divider */}

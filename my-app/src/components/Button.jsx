@@ -20,7 +20,7 @@ const Button = ({
       {loading ? <Pulse color="white" /> : <>{text}</>}
       {src && <Image src={src} alt={alt} width={30} height={30} />}
 
-      {text}
+      {/* {text} */}
 
       {children}
     </button>

@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between ">
         {/* Logo BattleGrid */}
         <Link
-          href="https://flowbite.com/"
+          href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <Image src={icon} className="w-24" alt="battlegrid logo" />

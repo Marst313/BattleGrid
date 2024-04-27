@@ -29,10 +29,10 @@ const ListTournaments = () => {
             transition={{
               repeat: Infinity,
               repeatType: "loop",
-              duration: 10,
+              duration: 20,
               ease: "linear",
             }}
-            className="mx-auto flex justify-between gap-3 lg:max-w-screen-xl"
+            className="mx-auto flex justify-center gap-5 lg:max-w-screen-xl"
           >
             {listGame.map((game) => (
               <li key={game.id} className="flex flex-col items-center">

@@ -1,8 +1,7 @@
 import React from "react";
-import Loginbanner from "./components/Banner";
 import Link from "next/link";
-import FormLogin from "./components/FormLogin";
-import { cookies } from "next/headers";
+import FormLogin from "@/components/login/FormLogin";
+import Loginbanner from "@/components/login/Banner";
 
 export const metadata = {
   title: "Battle Grid - Login",

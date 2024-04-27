@@ -22,7 +22,7 @@ const DropdownCompetition = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={`bg-transparent text-base font-bold hover:bg-transparent hover:text-white focus:bg-transparent ${
-              path === "/tourney"
+              path.startsWith("/tourney")
                 ? "w-fit rounded-none border-b-2 border-oren text-center font-semibold"
                 : "font-light text-gray-300"
             }`}
@@ -35,7 +35,7 @@ const DropdownCompetition = () => {
                 <NavigationMenuLink asChild className="hover:bg-abu2">
                   <Link
                     className="from-muted/50 to-muted flex h-full w-full select-none flex-col justify-end rounded-md bg-abu1  p-6 no-underline outline-none  focus:shadow-md"
-                    href="/tourney/geneartor"
+                    href="/tourney/generator"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium text-white">
                       Create Your Own
