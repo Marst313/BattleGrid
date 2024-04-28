@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import { convertDate } from "@/utils/functions";
+import Link from "next/link";
 
 const ListTournaments = () => {
   const [allTour, setAllTour] = useState([]);
@@ -31,24 +33,16 @@ const ListTournaments = () => {
 
   useEffect(() => {}, [allTour]);
 
+  if (!allTour) {
+    return <h1>There is no tournaments yet</h1>;
+  }
+
   return (
     <ul className="mt-5 grid w-full grid-cols-1 gap-5 lg:grid-cols-4">
       {allTour.map((tournament) => {
-        const createdAt = new Intl.DateTimeFormat("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        }).format(new Date(tournament.createdAt));
-
-        const startedAt = new Intl.DateTimeFormat("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        }).format(new Date(tournament.startDate));
-
         console.log(tournament);
         return (
-          <li key={tournament.id} className="h-full w-full ">
+          <li key={tournament.id} className="h-full w-full">
             <Image src={bgImage} alt="test" className="w-full" />
 
             <div className="flex w-full flex-col gap-3 rounded-b-lg bg-abu p-5">
@@ -96,21 +90,23 @@ const ListTournaments = () => {
                   icon={faCalendar}
                   className="h-5 w-5 text-white"
                 />
-                <p className="text-sm font-medium text-white/60">{startedAt}</p>
+                <p className="text-sm font-medium text-white/60">
+                  {convertDate(tournament.startDate)}
+                </p>
               </div>
 
               <div className="my-2 flex items-center gap-3">
                 <p className="text-sm font-bold text-white">
-                  Created at {createdAt}
+                  Created at {convertDate(tournament.createdAt)}
                 </p>
               </div>
 
-              <button
-                type="button"
-                className="w-32 self-center rounded-full bg-oren py-1 font-semibold hover:bg-opacity-90"
+              <Link
+                href={`/tourney/${tournament.id}`}
+                className="flex w-32 items-center justify-center self-center rounded-full bg-oren py-1 font-semibold hover:bg-opacity-90 "
               >
                 Join
-              </button>
+              </Link>
             </div>
           </li>
         );

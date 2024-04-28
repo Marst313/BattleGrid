@@ -21,7 +21,10 @@ const upload = multer({
 exports.uploadThumbnailPhoto = upload.single('thumbnail');
 
 exports.createNewCompetition = catchAsync(async (req, res, next) => {
-  const { title, prizepool, startDate, endDate, type, include_3rdPlace, maxParicipants } = req.body;
+  const { title, prizepool, startDate, endDate, type, include_3rdPlace, maxParticipants, currentParticipants, thumbnail } = req.body;
+
+  const data = req.body;
+  console.log(data);
 
   const newCompetition = await prisma.tourney.create({
     data: {
@@ -31,14 +34,16 @@ exports.createNewCompetition = catchAsync(async (req, res, next) => {
           id: req.user.id,
         },
       },
-      prizepool,
+      prizepool: parseFloat(prizepool),
       startDate,
       endDate,
+      thumbnail,
       FormatTour: {
         create: {
           type,
-          include_3rdPlace,
-          maxParicipants,
+          include_3rdPlace: Boolean(include_3rdPlace),
+          maxParticipants: parseInt(maxParticipants),
+          currentParticipants: parseInt(currentParticipants),
         },
       },
     },

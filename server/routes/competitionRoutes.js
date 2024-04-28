@@ -7,6 +7,17 @@ const { uploadImageFirebase } = require('../middleware/uploadImageFirebase');
 const router = express.Router();
 
 router
+  .route('/') //
+  .get(getAllCompetition)
+  .post(
+    authController.protected, //
+    authController.restrictTo('ADMIN'),
+    // uploadThumbnailPhoto,
+    // uploadImageFirebase,
+    createNewCompetition
+  );
+
+router
   .route('/:id') //
   .get(getSingleCompetition)
   .patch(
@@ -17,10 +28,5 @@ router
     updateCompetition
   )
   .delete(authController.protected, authController.restrictTo('ADMIN'), deleteCompetition);
-
-router
-  .route('/') //
-  .get(getAllCompetition)
-  .post(authController.protected, authController.restrictTo('ADMIN'), createNewCompetition);
 
 module.exports = router;
