@@ -17,7 +17,7 @@ exports.uploadImageFirebase = async (req, res, next) => {
   }
 
   // Resize image using Sharp
-  const resizedImageBuffer = await sharp(req.file.buffer).resize({ width: 500, height: 500 }).toBuffer();
+  const resizedImageBuffer = await sharp(req.file.buffer).resize({ width: 400, height: 400 }).jpeg({ quality: 90 }).toBuffer();
 
   const metadata = {
     metadata: {

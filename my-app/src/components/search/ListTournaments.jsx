@@ -38,12 +38,22 @@ const ListTournaments = () => {
   }
 
   return (
-    <ul className="mt-5 grid w-full grid-cols-1 gap-5 lg:grid-cols-4">
+    <ul className="mt-10  grid w-full grid-cols-1 gap-5 lg:grid-cols-4 ">
       {allTour.map((tournament) => {
         console.log(tournament);
+
         return (
-          <li key={tournament.id} className="h-full w-full">
-            <Image src={bgImage} alt="test" className="w-full" />
+          <li
+            key={tournament.id}
+            className="h-full w-full overflow-hidden rounded-lg"
+          >
+            <Image
+              src={tournament.thumbnail}
+              alt="test"
+              width={400}
+              height={400}
+              className="h-[250px] w-[400px] bg-abu2"
+            />
 
             <div className="flex w-full flex-col gap-3 rounded-b-lg bg-abu p-5">
               {/* Avatar */}
@@ -52,8 +62,8 @@ const ListTournaments = () => {
                   <Image
                     src={tournament.thumbnail}
                     alt="icon"
-                    width={45}
-                    height={45}
+                    width={400}
+                    height={400}
                     className=" grayscale"
                   />
                 </div>
@@ -103,7 +113,7 @@ const ListTournaments = () => {
 
               <Link
                 href={`/tourney/${tournament.id}`}
-                className="flex w-32 items-center justify-center self-center rounded-full bg-oren py-1 font-semibold hover:bg-opacity-90 "
+                className="flex w-32 items-center justify-center self-center rounded-full bg-oren py-1 font-semibold hover:scale-105"
               >
                 Join
               </Link>

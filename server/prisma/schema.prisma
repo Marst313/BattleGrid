@@ -35,7 +35,7 @@ model Tourney {
   prizepool  Float
   startDate  DateTime    @default(now())
   endDate    DateTime    @default(now())
-  thumbnail  String      @default("https://firebasestorage.googleapis.com/v0/b/battlegrid-c3f07.appspot.com/o/thumbnails%2Fdefault%20.jpg?alt=media")
+  thumbnail  String      @default("https://firebasestorage.googleapis.com/v0/b/battlegrid-c3f07.appspot.com/o/thumbnails%2Fdefault.png?alt=media")
   FormatTour FormatTour?
 }
 

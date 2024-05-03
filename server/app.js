@@ -13,10 +13,12 @@ const globalErrorHandle = require('./controller/errorController');
 const AppError = require('./utils/appError');
 
 const app = express();
-const upload = multer();
 
 //? Validator email and etc
-//?
+//? Chat Bot
+
+//* DB
+//? Uang Pendaftaran , Location (Online, Tempat)
 
 // ! Set security HTTP headers
 app.use(helmet());
